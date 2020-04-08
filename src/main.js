@@ -5,6 +5,7 @@ import { Plugin } from 'vue-fragment';
 import SiyeRouter from './route/initRouter';
 import App from './App';
 import routes from './routeMap';
+import './styles/app.less';
 
 Vue.component(Button.name, Button);
 Vue.use(Plugin);
