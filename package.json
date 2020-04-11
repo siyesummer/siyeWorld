@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "npm run start-netease-api | vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "start-netease-api": "node netease-cloud-music-api/app.js"
   },
   "dependencies": {
     "ant-design-vue": "1.4.12",
@@ -54,6 +55,6 @@
     "last 2 versions"
   ],
   "proxy": {
-    "target": "http://siyefun.top"
+    "target": "http://localhost:3000/"
   }
 }

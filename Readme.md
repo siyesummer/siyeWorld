@@ -1,5 +1,9 @@
 # siyeWorld
 
+## 音乐播放器api依赖于根目录下 `netease-cloud-music-api`
+详情见 [网易云音乐 Node.js API service](https://binaryify.github.io/NeteaseCloudMusicApi)
+需先进入该目录执行 `npm install` 安装所需依赖
+
 ## Project setup
 ```
 npm install
