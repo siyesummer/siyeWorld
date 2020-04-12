@@ -14,6 +14,9 @@ const path = require('path');
 
 const rootDir = process.cwd();
 
+// 项目内功能模块路径
+const packagesDir = path.join(rootDir, 'packages');
+
 /**
  * utils: 判断了路径是否是文件
  * @param {String} chkPath 路径
@@ -60,8 +63,37 @@ function fetchPackageInfo(pkgPath) {
   return info;
 }
 
+/**
+ * 搜集路径下的包信息
+ * @param {String} pkgDir 文件夹路径
+ * @returns {Array}
+ */
+function collectPackagesMap(pkgDir) {
+  if (!fs.existsSync(pkgDir)) {
+    return [];
+  }
+
+  const packages = fs.readdirSync(pkgDir);
+
+  return packages.map(pkg => {
+    const pkgPath = path.join(pkgDir, pkg);
+    const info = fetchPackageInfo(pkgPath);
+
+    return {
+      name: info.name,
+      path: pkgPath,
+      info,
+    };
+  });
+}
+
+// 项目内功能模块包相关信息
+const packagesInfo = collectPackagesMap(packagesDir);
+
 exports.host = {
   name: 'ROOT',
   path: rootDir,
   info: fetchPackageInfo(rootDir),
 };
+
+exports.packagesInfo = packagesInfo;

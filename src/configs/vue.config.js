@@ -1,5 +1,6 @@
 const rootDir = process.cwd();
 const logger = require('../utils/logger');
+const alias = require('./pathAlias');
 const { host } = require('./packageManifest');
 
 const { target } = (host.info && host.info.proxy) || {};
@@ -25,6 +26,10 @@ function generateConf(options = {}) {
       // 全局代理地址设置
       devServer: {
         proxy,
+      },
+      resolve: {
+        extensions: ['.js', '.vue', '.json'],
+        alias,
       },
     },
     ...optionConfig
