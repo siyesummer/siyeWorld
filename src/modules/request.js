@@ -3,7 +3,7 @@
  * 使用说明：request.get('./api')
  * @requires npm:axios
  */
-import { Message } from 'ant-design-vue';
+import { message } from 'ant-design-vue';
 import axios from 'axios';
 import {
   get
@@ -129,7 +129,7 @@ class Request {
 
             if (status === 401) {
               // 没权限
-              Message.error('登录状态失效，请重新登录');
+              message.error('登录状态失效，请重新登录');
               this.innoConfig.error401(err);
             }
             switch (status) {

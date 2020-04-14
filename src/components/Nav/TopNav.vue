@@ -46,18 +46,15 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-@topbar-bg: #001529;
-@topbar-hover-bg: #000;
-@hover-border-bg: #c20c0c;
-
 .topbar {
-  background-color: @topbar-bg;
+  background-color: @primary-color;
   width: 100%;
   position: fixed;
   height: 70px;
   line-height: 70px;
+  z-index: 1024;
   .wrapper {
-    width: 1180px;
+    width: 1200px;
     margin: 0 auto;
     display: flex;
     .logo {
@@ -92,13 +89,13 @@ export default {
           display: inline-block;
         }
         &:hover {
-          background-color: @topbar-hover-bg;
-          border-bottom: 3px solid @hover-border-bg;
+          background-color: @primary-hover-bg;
+          border-bottom: 3px solid @primary-border-color;
         }
       }
       li.active {
-        background-color: @topbar-hover-bg;
-        border-bottom: 3px solid @hover-border-bg;
+        background-color: @primary-hover-bg;
+        border-bottom: 3px solid @primary-border-color;
       }
     }
   }
