@@ -21,7 +21,7 @@
 
 ## API 接口申明
 
-接口请求`request`基于`axios`封装在 `packages/package-name/src/modules`下 。
+接口请求`request`基于`axios`封装在根目录 `src/modules`下 。
 
 例：
 ```JavaScript
