@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import routeMap from '../../route';
+import routeMap from '@ROOT/route';
 
 export default {
   name: 'TopNav',
