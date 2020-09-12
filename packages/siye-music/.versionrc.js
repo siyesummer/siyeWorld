@@ -1,6 +1,8 @@
 module.exports = {
   // 标签前缀
   "tag-prefix": "siye-music@",
+  // 日志记录路径
+  "path": "packages/siye-music/*",
   // 生命周期执行配置(是否跳过)
   "skip": {
     "bump": false,
