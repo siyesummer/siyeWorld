@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { fetchSongDetail, fetchSongInfo } from '@siye-music/api';
+import { fetchSongDetail, fetchSongInfo } from '../../api';
 
 export default {
   name: 'AudioPlay',

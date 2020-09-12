@@ -49,8 +49,8 @@
 
 <script>
 import { Input } from 'ant-design-vue';
-import { fetchSearchInfo } from '@siye-music/api';
-import { PaginationWrapper } from '@ROOT/packageComponents';
+import { fetchSearchInfo } from '../../api';
+import { PaginationWrapper } from '../../components';
 import { colColumns, tableColumns } from './columns';
 
 export default {
