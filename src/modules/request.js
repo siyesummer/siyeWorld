@@ -60,11 +60,11 @@ function download(actualMethod, actualArgs) {
     let formInnerHtml = '';
     if (actualArgs.length > 1) {
       const params = actualArgs[1];
-      for (let key in params) {
+      Object.keys(params).forEach(key => {
         if (key !== 'method') {
           formInnerHtml += `<input type='hidden' name=${key}  value=${params[key]} />`;
         }
-      }
+      });
     }
 
     formDoc.write(`<html><head></head><body><form  name="download" onreset=${onreset(iframe, resolve, reject,)} method=${actualMethod} action=${BASE_URL}${actualArgs[0]} >${formInnerHtml}</form></body></html>`);
