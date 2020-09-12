@@ -17,7 +17,6 @@
     "colors": "^1.4.0",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
-    "vue-fragment": "^1.5.1",
     "vue-router": "^3.1.6"
   },
   "devDependencies": {

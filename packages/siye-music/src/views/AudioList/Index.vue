@@ -1,6 +1,6 @@
 <!-- 歌单 -->
 <template>
-  <fragment>
+  <div>
     <PaginationWrapper size="small" :meta="meta" @paging="onPaging">
       <div style="text-align:center">
         <InputSearch enterButton v-model="searchValue" @pressEnter="search" class="search-input" />
@@ -44,7 +44,7 @@
         </table>
       </div>
     </PaginationWrapper>
-  </fragment>
+  </div>
 </template>
 
 <script>

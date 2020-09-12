@@ -1,14 +1,13 @@
 import Vue from 'vue';
 import Button from 'ant-design-vue/lib/button';
 import 'ant-design-vue/dist/antd.css';
-import { Plugin } from 'vue-fragment';
 import SiyeRouter from './route/initRouter';
 import App from './App';
 import routes from './routeMap';
 import './styles/app.less';
 
 Vue.component(Button.name, Button);
-Vue.use(Plugin);
+
 Vue.config.productionTip = false;
 
 Vue.use(SiyeRouter);

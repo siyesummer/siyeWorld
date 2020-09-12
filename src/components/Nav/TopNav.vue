@@ -1,5 +1,5 @@
 <template>
-  <fragment>
+  <div>
     <div class="topbar">
       <div class="wrapper">
         <h1 class="logo" @click="toHomePage">
@@ -17,7 +17,7 @@
         </ul>
       </div>
     </div>
-  </fragment>
+  </div>
 </template>
 
 <script>

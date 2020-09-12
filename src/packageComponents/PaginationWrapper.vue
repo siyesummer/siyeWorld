@@ -12,7 +12,7 @@
 -->
 
 <template>
-  <fragment>
+  <div>
     <slot name="default" :pagination="pagination">
       <Skeleton active />
     </slot>
@@ -26,7 +26,7 @@
         />
       </slot>
     </div>
-  </fragment>
+  </div>
 </template>
 
 <script>
