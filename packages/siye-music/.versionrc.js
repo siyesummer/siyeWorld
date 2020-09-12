@@ -12,6 +12,7 @@ module.exports = {
   },
   // 生命周期脚本
   "scripts": {
+    "prerelease": "git pull origin master",
     // 添加标签后执行
     "posttag": "git push --tags origin master"
   },
