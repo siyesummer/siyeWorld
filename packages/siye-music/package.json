@@ -10,5 +10,7 @@
     "lyric": "^0.2.0",
     "netease-cloud-music-api": "https://gitee.com/xyhken/NeteaseCloudMusicApi.git"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "standard-version": "^9.0.0"
+  }
 }
