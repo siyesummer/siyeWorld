@@ -9,7 +9,8 @@ import {
   get
 } from 'lodash';
 
-const BASE_URL = './';
+// netease-cloud-music-api服务端口
+const BASE_URL = 'http://localhost:3000';
 
 const supportMethods = [
   'request',
