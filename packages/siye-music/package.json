@@ -4,6 +4,11 @@
   "keywords": [
     "siye-world-package"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "ant-design-vue": "^1.6.5",
+    "axios": "^0.20.0",
+    "lyric": "^0.2.0",
+    "netease-cloud-music-api": "https://gitee.com/xyhken/NeteaseCloudMusicApi.git"
+  },
   "devDependencies": {}
 }
