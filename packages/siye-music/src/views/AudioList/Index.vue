@@ -157,6 +157,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+@import "../../styles/siye-music";
 .active {
   background-color: #e0e0e0 !important;
 }
