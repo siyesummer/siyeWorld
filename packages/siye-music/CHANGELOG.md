@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/siyesummer/siyeWorld/compare/siye-music@0.1.2...siye-music@0.1.3) (2020-09-13)
+
+
+### Docs
+
+* **siye-music:** 项目配置说明调整 ([c256331](https://github.com/siyesummer/siyeWorld/commit/c256331c44ab2a81f53c6ca94527ca6638e8c2bc))
+
 ### [0.1.2](https://github.com/siyesummer/siyeWorld/compare/siye-music@0.1.1...siye-music@0.1.2) (2020-09-13)
 
 
