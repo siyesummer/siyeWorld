@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/siyesummer/siyeWorld/compare/siye-music@0.1.1...siye-music@0.1.2) (2020-09-13)
+
+
+### Bug Fixes
+
+* **request:** 请求地址baseUrl调整 ([7df8cab](https://github.com/siyesummer/siyeWorld/commit/7df8cab358442995bd4b12bb7937eb5c788165e3))
+
+
+### Style
+
+* **siye-music:** 样式依赖调整 ([d43274b](https://github.com/siyesummer/siyeWorld/commit/d43274b15b6301be91081caf5f1c3d65bf218a51))
+
+
+### Docs
+
+* **siye-music:** 添加`Readme.md`文档 ([d5de3a8](https://github.com/siyesummer/siyeWorld/commit/d5de3a88579a45b998cf5c5e76fffcca8751d2a4))
+
 ### 0.1.1 (2020-09-12)
 
 
