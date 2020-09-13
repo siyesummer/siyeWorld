@@ -10,6 +10,9 @@ _音乐播放器 api 依赖于 [netease-cloud-music-api](https://github.com/Bina
 ```shell
 # 添加依赖
 yarn add siye-music
+
+# 添加less less-loader
+yarn add less less-loader -D
 ```
 
 ```json
@@ -19,7 +22,11 @@ yarn add siye-music
     "start-netease-api": "yarn node node_modules/netease-cloud-music-api/app.js"
   },
   "dependencies": {
-    "siye-music": "^0.1.3"
+    "siye-music": "^0.1.4"
+  },
+  "devDependencies": {
+    "less": "^3.11.1",
+    "less-loader": "^5.0.0"
   }
 }
 ```
@@ -55,6 +62,18 @@ module.exports = {
     loaderOptions: {
       less: {
         javascriptEnabled: true
+      }
+    }
+  }
+
+  // vue-cli4版本配置
+  css: {
+    sourceMap: false, // 仅需调试样式时设置为 true ! 开启后会显著影响构建速度
+    loaderOptions: {
+      less: {
+        lessOptions: {
+          javascriptEnabled: true,
+        }
       }
     }
   }
