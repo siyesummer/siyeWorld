@@ -1,7 +1,7 @@
 /**
  * api: 网易云音乐相关接口
  */
-import request from '../modules/request';
+import request from 'siye-core/src/modules/request';
 
 /**
  * 获取音乐搜索信息
