@@ -1,0 +1,16 @@
+{
+  "name": "siye-core",
+  "version": "0.1.0",
+  "keywords": [
+    "siye-world-package"
+  ],
+  "scripts": {
+    "release": "standard-version"
+  },
+  "dependencies": {
+    "axios": "^0.20.0"
+  },
+  "devDependencies": {
+    "standard-version": "^9.0.0"
+  }
+}
