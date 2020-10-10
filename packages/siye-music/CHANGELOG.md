@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5-alpha.0](https://github.com/siyesummer/siyeWorld/compare/siye-music@0.1.4...siye-music@0.1.5-alpha.0) (2020-10-10)
+
+
+### Bug Fixes
+
+* 日志记录路径调整 ([fd27b0f](https://github.com/siyesummer/siyeWorld/commit/fd27b0f5ffd37ac10e76e520cca4103fea6c10b1))
+
 ### [0.1.4](https://github.com/siyesummer/siyeWorld/compare/siye-music@0.1.3...siye-music@0.1.4) (2020-09-13)
 
 
