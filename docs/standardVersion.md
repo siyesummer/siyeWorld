@@ -148,7 +148,7 @@ _请勿手动修改版本号_
 ### 查看帮助
 
 ```shell
-npm run pub -- --help
+npm run release -- --help
 ```
 
 ### 自动升级版本
@@ -156,7 +156,7 @@ npm run pub -- --help
 执行脚本
 
 ```shell
-npm run pub
+npm run release
 ```
 
 #### 自动升级规则(测试结果总结)
@@ -176,19 +176,19 @@ npm run pub
 以`1.0.1`版本为例
 
 ```shell
-npm run pub -- --prerelease
+npm run release -- --prerelease
 ```
 
 版本号生成为`1.0.1-0`
 
 ```shell
-npm run pub -- --prerelease alpha
+npm run release -- --prerelease alpha
 ```
 
 版本号生成为`1.0.1-alpha.0`
 
 ```shell
-npm run pub -- --prerelease beta
+npm run release -- --prerelease beta
 ```
 
 版本号生成为`1.0.1-beta.0`
@@ -199,13 +199,13 @@ npm run pub -- --prerelease beta
   `major, minor, patch`主版本，次版本，修订版
 
 ```shell
-npm run pub -- --release-as minor
+npm run release -- --release-as minor
 ```
 
 - 指定升级具体版本号
 
 ```shell
-npm run pub -- --release-as 1.1.0
+npm run release -- --release-as 1.1.0
 ```
 
 #### CLI 用法
@@ -215,5 +215,5 @@ _使用 CLI 配置优先级将高于配置文件_
 - 指定提交信息
 
 ```shell
-npm run pub -- --message "chore(release): @v{{currentTag}}"
+npm run release -- --message "chore(release): @v{{currentTag}}"
 ```
