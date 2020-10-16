@@ -46,6 +46,14 @@ module.exports = {
 }
 ```
 
+*只记录当前文件夹下日志*
+
+```JavaScript
+{
+  "path": "./"
+}
+```
+
 #### 提交信息
 
 - release-commit-message-format: String `commit`提交信息，默认为`chore(release): {{currentTag}}`，其中`currentTag`为版本号。
