@@ -1,9 +1,9 @@
 const rootDir = process.cwd();
-const logger = require('../utils/logger');
+const logger = require('siye-core/src/utils/logger');
 const alias = require('./pathAlias');
 const {
   host
-} = require('./packageManifest');
+} = require('siye-core/src/utils/packageManifest');
 const defaultTheme = require('./theme');
 
 const {

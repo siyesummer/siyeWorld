@@ -3,7 +3,7 @@
  * 生成 webpack-dev-server 的 alias 配置
  */
 const path = require('path');
-const { packagesInfo, host } = require('./packageManifest');
+const { packagesInfo, host } = require('siye-core/src/utils/packageManifest');
 
 const alias = {};
 
