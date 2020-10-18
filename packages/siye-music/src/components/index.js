@@ -1,5 +1,7 @@
 import PaginationWrapper from './PaginationWrapper';
+import AudioTable from './AudioTable';
 
 export {
-  PaginationWrapper
+  PaginationWrapper,
+  AudioTable
 };

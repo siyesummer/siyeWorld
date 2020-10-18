@@ -6,42 +6,22 @@
         <InputSearch enterButton v-model="searchValue" @pressEnter="search" class="search-input" />
       </div>
       <div class="music-wrapper">
-        <table class="musci-table">
-          <colgroup>
-          <!-- 列宽 -->
-            <col v-for="(item,index) in colColumns" :key="index" :style="`width:${item.width}`" />
-          </colgroup>
-          <thead>
-            <!-- 表头 -->
-            <tr>
-              <th v-for="(item,index) in tableColumns" :key="index">{{item.title}}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              v-for="(item,index) in audioList"
-              :key="index"
-              :class="curAudio && curAudio.id === item.id ? 'active' : ''"
-              @click="changeAudio(index)"
-            >
-              <td>
-                <div class="number">{{number(index)}}</div>
-              </td>
-              <td>
-                <div :title="item.name" class="title text">{{item.name}}</div>
-              </td>
-              <td>
-                <div class="time"></div>
-              </td>
-              <td>
-                <div :title="singer(item)" class="singer text">{{singer(item)}}</div>
-              </td>
-              <td>
-                <div :title="item.album.name" class="album text">{{item.album.name}}</div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <AudioTable
+          :columns="columns"
+          :tableData="audioList"
+          @rowClick="({index}) => changeAudio(index)"
+        >
+          <!-- 序列号 -->
+          <template #number="{index}">{{number(index)}}</template>
+          <!-- 歌手 -->
+          <template #singer="{row}">
+            <span :title="singer(row)">{{singer(row)}}</span>
+          </template>
+          <!-- 专辑 -->
+          <template #album="{row}">
+            <span :title="row.album.name">{{row.album.name}}</span>
+          </template>
+        </AudioTable>
       </div>
     </PaginationWrapper>
   </div>
@@ -50,14 +30,15 @@
 <script>
 import { Input } from 'ant-design-vue';
 import { fetchSearchInfo } from '../../api';
-import { PaginationWrapper } from '../../components';
-import { colColumns, tableColumns } from './columns';
+import { PaginationWrapper, AudioTable } from '../../components';
+import columns from './columns';
 
 export default {
   name: 'AudioList',
   components: {
     InputSearch: Input.Search,
     PaginationWrapper,
+    AudioTable,
   },
   props: {},
   data() {
@@ -69,15 +50,14 @@ export default {
       curAudio: undefined, // 当前音频信息
       curIndex: undefined, // 当前音频index
       searchValue: undefined, // 搜索值
-      defaultSearchValue: '夏天的风', // 默认搜索值
+      defaultSearchValue: '匿名的好友', // 默认搜索值
       src: undefined, // 音频src
       // 分页参数
       meta: {
         ...PaginationWrapper.defaultMeta,
         limit: 15,
       },
-      colColumns,
-      tableColumns,
+      columns,
     };
   },
   computed: {
@@ -157,7 +137,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-@import "../../styles/siye-music";
+@import '../../styles/siye-music';
 .active {
   background-color: #e0e0e0 !important;
 }
