@@ -8,7 +8,9 @@
     "release": "standard-version"
   },
   "dependencies": {
-    "axios": "^0.20.0"
+    "axios": "^0.20.0",
+    "colors": "^1.4.0",
+    "lodash": "^4.17.20"
   },
   "devDependencies": {
     "standard-version": "^9.0.0"
