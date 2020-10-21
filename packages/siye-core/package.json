@@ -10,7 +10,8 @@
   "dependencies": {
     "axios": "^0.20.0",
     "colors": "^1.4.0",
-    "lodash": "^4.17.20"
+    "lodash": "^4.17.20",
+    "vue-inject": "^2.1.1"
   },
   "devDependencies": {
     "standard-version": "^9.0.0"

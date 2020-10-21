@@ -5920,6 +5920,24 @@ jest-worker@^25.4.0:
     merge-stream "^2.0.0"
     supports-color "^7.0.0"
 
+jpex-defaults@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npm.taobao.org/jpex-defaults/download/jpex-defaults-2.0.0.tgz#cfee993bcf704103eb79851a376a41423645601a"
+  integrity sha1-z+6ZO89wQQPreYUaN2pBQjZFYBo=
+
+jpex-web@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npm.taobao.org/jpex-web/download/jpex-web-2.0.0.tgz#978c5ee46244673cdaaf0102fea80810d4fac53b"
+  integrity sha1-l4xe5GJEZzzarwEC/qgIENT6xTs=
+  dependencies:
+    jpex-defaults "^2.0.0"
+    promise-polyfill "^6.0.2"
+
+jpex@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.npm.taobao.org/jpex/download/jpex-2.1.0.tgz#da389aed51b2296b3095d0ba059db3f2a7f3f69f"
+  integrity sha1-2jia7VGyKWswldC6BZ2z8qfz9p8=
+
 js-message@1.0.5:
   version "1.0.5"
   resolved "https://registry.npm.taobao.org/js-message/download/js-message-1.0.5.tgz#2300d24b1af08e89dd095bc1a4c9c9cfcb892d15"
@@ -7940,6 +7958,11 @@ promise-inflight@^1.0.1:
   resolved "https://registry.npm.taobao.org/promise-inflight/download/promise-inflight-1.0.1.tgz#98472870bf228132fcbdd868129bad12c3c029e3"
   integrity sha1-mEcocL8igTL8vdhoEputEsPAKeM=
 
+promise-polyfill@^6.0.2:
+  version "6.1.0"
+  resolved "https://registry.npm.taobao.org/promise-polyfill/download/promise-polyfill-6.1.0.tgz#dfa96943ea9c121fca4de9b5868cb39d3472e057"
+  integrity sha1-36lpQ+qcEh/KTem1hoyznTRy4Fc=
+
 proxy-addr@~2.0.5:
   version "2.0.6"
   resolved "https://registry.npm.taobao.org/proxy-addr/download/proxy-addr-2.0.6.tgz#fdc2336505447d3f2f2c638ed272caf614bbb2bf"
@@ -9867,6 +9890,14 @@ vue-hot-reload-api@^2.3.0:
   version "2.3.4"
   resolved "https://registry.npm.taobao.org/vue-hot-reload-api/download/vue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
   integrity sha1-UylVzB6yCKPZkLOp+acFdGV+CPI=
+
+vue-inject@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.npm.taobao.org/vue-inject/download/vue-inject-2.1.1.tgz#1a5ebcf7bfe97b070efa368f73091c9414caeca2"
+  integrity sha1-Gl6897/pewcO+jaPcwkclBTK7KI=
+  dependencies:
+    jpex "^2.1.0"
+    jpex-web "^2.0.0"
 
 "vue-loader-v16@npm:vue-loader@^16.0.0-beta.7":
   version "16.0.0-beta.7"
