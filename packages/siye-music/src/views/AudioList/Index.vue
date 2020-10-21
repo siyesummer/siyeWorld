@@ -31,6 +31,7 @@
 import { Input } from 'ant-design-vue';
 import { fetchSearchInfo } from '../../api';
 import { PaginationWrapper, AudioTable } from '../../components';
+import events from '../../modules/constants/events';
 import columns from './columns';
 
 export default {
@@ -65,9 +66,18 @@ export default {
       return this.isPlay ? '暂停' : '播放';
     },
   },
+  dependencies: ['EventBus'],
   watch: {},
-  mounted() {},
+  mounted() {
+    this.EventBus.on(events.nextAudio, this.handlernextAudio);
+  },
+  beforeDestroy() {
+    this.EventBus.off(events.nextAudio, this.handlernextAudio);
+  },
   methods: {
+    handlernextAudio(step) {
+      this.toPlay(step);
+    },
     /**
      * 上一曲/下一曲
      * @param {Number} step: [-1, 1]
@@ -94,15 +104,12 @@ export default {
       const number = page * limit + index + 1;
       return number < 10 ? `0${number}` : number;
     },
-    onPlay() {
-      this.$emit('onPlay', this.curAudio.id);
-    },
     // 切换音乐
     changeAudio(index) {
       const { audioList } = this;
       this.curAudio = audioList[index];
       this.curIndex = index;
-      this.onPlay();
+      this.EventBus.emit(events.changeAudio, { id: this.curAudio.id });
     },
     // 页码改变
     onPaging(meta) {

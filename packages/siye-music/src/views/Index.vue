@@ -2,12 +2,12 @@
   <div class="audio-play-wrapper">
     <div class="list-wrapper">
       <div class="audio-list">
-        <AudioList ref="AudioList" @onPlay="onPlay" />
+        <AudioList />
       </div>
       <div class="audio-lyric"></div>
     </div>
     <div class="audio-play">
-      <AudioPlay :songId="songId" @toPlan="toPlan" />
+      <AudioPlay />
     </div>
   </div>
 </template>
@@ -26,22 +26,9 @@ export default {
     AudioPlay,
   },
   data() {
-    return {
-      songId: undefined, // 歌曲id
-    };
+    return {};
   },
-  methods: {
-    onPlay(songId) {
-      this.songId = songId;
-    },
-    /**
-     * 上一曲/下一曲
-     * @param {Number} step: [-1, 1]
-     */
-    toPlan(step = 1) {
-      this.$refs.AudioList.toPlay(step);
-    },
-  },
+  methods: {},
 };
 </script>
 <style lang="less" scoped>

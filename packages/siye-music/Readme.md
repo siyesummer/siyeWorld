@@ -3,6 +3,10 @@
 _音乐播放器 api 依赖于 [netease-cloud-music-api](https://github.com/Binaryify/NeteaseCloudMusicApi)_
 详情见 [网易云音乐 Node.js API service](https://binaryify.github.io/NeteaseCloudMusicApi)
 
+## 依赖核心模块
+
+`siye-core`包中包含了模块需要的功能: 如`request`，`service`
+
 ## 使用
 
 ### 在项目中安装依赖，添加脚本
@@ -78,6 +82,18 @@ module.exports = {
     }
   }
 }
+```
+### `main.js`配置
+
+*service*功能依赖于插件[vue-inject](https://github.com/jpex-js/vue-inject)
+
+```js
+// main.js
+import injector from 'vue-inject';
+import EventBus from 'siye-core/src/modules/EventBus';
+
+Vue.use(injector);
+injector.service('EventBus', EventBus);
 ```
 
 ### 在项目中引入

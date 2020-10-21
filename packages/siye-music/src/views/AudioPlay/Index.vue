@@ -2,9 +2,9 @@
 <template>
   <div class="playbar-wapper">
     <div class="play-btn">
-      <span title="上一首" class="prv" @click="$emit('toPlan', -1)"></span>
+      <span title="上一首" class="prv" @click="toPlan(-1)"></span>
       <span title="播放/暂停" :class="isPlay ? 'pause' : ''" class="play" @click="togglePlay"></span>
-      <span title="下一首" class="nxt" @click="$emit('toPlan', 1)"></span>
+      <span title="下一首" class="nxt" @click="toPlan(1)"></span>
     </div>
     <div class="img">
       <img :src="imgSrc" alt />
@@ -23,13 +23,12 @@
 
 <script>
 import { fetchSongDetail, fetchSongInfo } from '../../api';
+import events from '../../modules/constants/events';
 
 export default {
   name: 'AudioPlay',
   components: {},
-  props: {
-    songId: undefined, // 歌曲id
-  },
+  props: {},
   data() {
     return {
       isPlay: false, // 是否播放
@@ -37,8 +36,10 @@ export default {
       isHasAudio: false, // 是否有音频
       audioUrlInfo: undefined, // 音频url信息
       curAudio: undefined, // 当前音频信息
+      songId: undefined, // 歌曲id
     };
   },
+  dependencies: ['EventBus'],
   computed: {
     src() {
       return this.audioUrlInfo ? this.audioUrlInfo.url : '';
@@ -64,7 +65,19 @@ export default {
       this.autoPlay();
     },
   },
+  mounted() {
+    this.EventBus.on(events.changeAudio, this.handlerChange);
+  },
+  beforeDestroy() {
+    this.EventBus.off(events.changeAudio, this.handlerChange);
+  },
   methods: {
+    toPlan(step) {
+      this.EventBus.emit(events.nextAudio, step);
+    },
+    handlerChange({ id }) {
+      this.songId = id;
+    },
     autoPlay() {
       this.fetchSongDetail().then(() => {
         this.isPlay = true;
