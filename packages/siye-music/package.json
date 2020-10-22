@@ -12,7 +12,7 @@
     "babel-plugin-import": "^1.13.0",
     "lyric": "^0.2.0",
     "netease-cloud-music-api": "https://gitee.com/xyhken/NeteaseCloudMusicApi.git",
-    "siye-core": "worksapce:packages/siye-core"
+    "siye-core": "^0.1.1"
   },
   "devDependencies": {
     "standard-version": "^9.0.0"
