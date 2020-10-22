@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/siyesummer/siyeWorld/compare/siye-music@0.1.5-alpha.0...siye-music@0.1.5) (2020-10-22)
+
+
+### Features
+
+* `AudioTable`音乐列表表格封装 ([2f7abe8](https://github.com/siyesummer/siyeWorld/commit/2f7abe83a722280d82022c2dcfc5a5b2cedb8d52))
+* 配置文件转移到核心包`siye-core`内 ([aa851bb](https://github.com/siyesummer/siyeWorld/commit/aa851bbfc0316d8f5eccd691d28af55136c66a5c))
+
+
+### Bug Fixes
+
+* 删除多余`request`请求功能文件 ([329e4c7](https://github.com/siyesummer/siyeWorld/commit/329e4c74ebe581cb7be2092d08d5eec06b4d4030))
+* 判断表达式调整 ([f0b2021](https://github.com/siyesummer/siyeWorld/commit/f0b202163dd142db8c592c13226621d645b302e6))
+
+
+### Refactor
+
+* 歌曲播放调整为`eventBus`事件驱动 ([2e4cebb](https://github.com/siyesummer/siyeWorld/commit/2e4cebb8032950bf74a892099f15da406d267be0))
+
 ### [0.1.5-alpha.0](https://github.com/siyesummer/siyeWorld/compare/siye-music@0.1.4...siye-music@0.1.5-alpha.0) (2020-10-10)
 
 
