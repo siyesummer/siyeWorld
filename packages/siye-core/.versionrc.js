@@ -1,4 +1,7 @@
+const config = require('./config/versionrc.config');
+
 module.exports = {
+  ...config,
   // 标签前缀
   "tag-prefix": "siye-core@",
   // 日志记录路径
@@ -17,39 +20,5 @@ module.exports = {
     "posttag": "git push --tags origin master"
   },
   // 提交信息
-  "release-commit-message-format": "chore(release): siye-core@{{currentTag}}",
-  // 日志显示分类类型
-  "types": [{
-      "type": "feat",
-      "section": "Features"
-    },
-    {
-      "type": "fix",
-      "section": "Bug Fixes"
-    },
-    {
-      "type": "chore",
-      "hidden": true
-    },
-    {
-      "type": "docs",
-      "section": "Docs"
-    },
-    {
-      "type": "style",
-      "section": "Style"
-    },
-    {
-      "type": "refactor",
-      "section": "Refactor"
-    },
-    {
-      "type": "Revert",
-      "section": "Revert"
-    },
-    {
-      "type": "improvement",
-      "section": "Improvement"
-    }
-  ]
+  "release-commit-message-format": "chore(release): siye-core@{{currentTag}}"
 }
