@@ -8785,6 +8785,13 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
+"siye-core@worksapce:packages/siye-core":
+  version "0.1.1-alpha.0"
+  resolved "https://registry.npm.taobao.org/siye-core/download/siye-core-0.1.1-alpha.0.tgz#92eda46f242b2bd7e568de3ef18b1f068c089eb5"
+  integrity sha1-ku2kbyQrK9flaN4+8YsfBowInrU=
+  dependencies:
+    axios "^0.20.0"
+
 slash@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npm.taobao.org/slash/download/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
