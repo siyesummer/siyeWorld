@@ -7,7 +7,7 @@
       <span title="下一首" class="nxt" @click="toPlan(1)"></span>
     </div>
     <div class="img">
-      <img :src="imgSrc" alt />
+      <img v-if="imgSrc" :src="imgSrc" alt />
     </div>
     <div class="play">
       <div class="title" v-if="audioDetail">
@@ -42,21 +42,21 @@ export default {
   dependencies: ['EventBus'],
   computed: {
     src() {
-      return this.audioUrlInfo ? this.audioUrlInfo.url : '';
+      return this.audioUrlInfo?.url ?? '';
     },
     imgSrc() {
-      return this.audioDetail ? this.audioDetail.al.picUrl : '';
+      return this.audioDetail?.al?.picUrl ?? '';
     },
     title() {
       return this.isPlay ? '暂停' : '播放';
     },
     songName() {
-      return this.audioDetail ? this.audioDetail.name : '';
+      return this.audioDetail?.name ?? '';
     },
     singer() {
       const { audioDetail } = this;
       if (!audioDetail) return;
-      return audioDetail.ar[0] ? audioDetail.ar[0].name : '';
+      return audioDetail.ar[0]?.name ?? '';
     },
   },
   watch: {
