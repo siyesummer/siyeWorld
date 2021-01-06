@@ -8,7 +8,7 @@
     "release": "standard-version"
   },
   "dependencies": {
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "colors": "^1.4.0",
     "lodash": "^4.17.20",
     "vue-inject": "^2.1.1"
