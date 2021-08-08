@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "yarn run start-netease-api | vue-cli-service serve",
+    "serve": "yarn run start-netease-api | yarn start-chat | vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "start-netease-api": "yarn node node_modules/netease-cloud-music-api/app.js",
-    "release": "standard-version"
+    "release": "standard-version",
+    "start-chat": "yarn node node_modules/easy-chat/server.js"
   },
   "workspaces": [
     "packages/*"
