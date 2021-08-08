@@ -75,9 +75,9 @@ function download(actualMethod, actualArgs) {
 }
 
 class Request {
-  constructor(allMethods) {
+  constructor(allMethods, options = {}) {
     const axiosInstance = axios.create({
-      baseURL: BASE_URL,
+      baseURL: options.port || BASE_URL,
     });
 
     // 为所有方法添加错误处理
@@ -163,3 +163,7 @@ class Request {
 }
 
 export default new Request(supportMethods);
+
+export const customRequest = function(options = {}) {
+  return new Request(supportMethods, options);
+};
