@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <TopNav />
+    <!-- <TopNav /> -->
     <div class="main-content">
       <router-view />
     </div>
@@ -8,13 +8,9 @@
 </template>
 
 <script>
-import { TopNav } from './components';
 
 export default {
   name: 'app',
-  components: {
-    TopNav,
-  },
 };
 </script>
 
