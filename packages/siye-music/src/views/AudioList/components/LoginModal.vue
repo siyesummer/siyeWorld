@@ -247,7 +247,6 @@ export default {
     },
 
     async fetchInfo(cookie) {
-      this.$store.commit('siyeMusic/setCookie', cookie);
       // 获取登录信息
       const {
         data: { account, profile, code },
@@ -260,6 +259,8 @@ export default {
       if (code === 200) {
         this.$store.commit('siyeMusic/setProfile', profile);
         this.$store.commit('siyeMusic/setAccount', account);
+
+        this.$store.commit('siyeMusic/setCookie', cookie);
       }
     },
 
