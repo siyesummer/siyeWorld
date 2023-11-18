@@ -27,7 +27,6 @@ export function fetchSongInfo(songId) {
   return request.get(`song/url?id=${songId}`);
 }
 
-
 /**
  * 获取音乐详情
  * @param {String} ids:音乐 id, 如 ids=347230, ids=347230,347231

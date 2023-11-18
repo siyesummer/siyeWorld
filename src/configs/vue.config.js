@@ -1,9 +1,11 @@
 const rootDir = process.cwd();
+// eslint-disable-next-line import/no-extraneous-dependencies
 const logger = require('siye-core/src/utils/logger');
-const alias = require('./pathAlias');
 const {
   host
+// eslint-disable-next-line import/no-extraneous-dependencies
 } = require('siye-core/src/utils/packageManifest');
+const alias = require('./pathAlias');
 const defaultTheme = require('./theme');
 
 const {
@@ -30,9 +32,9 @@ function generateConf(options = {}) {
     lintOnSave: false,
     configureWebpack: {
       // 全局代理地址设置
-      devServer: {
-        proxy,
-      },
+      // devServer: {
+      //   proxy,
+      // },
       resolve: {
         extensions: ['.js', '.vue', '.json'],
         alias,

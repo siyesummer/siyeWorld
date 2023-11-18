@@ -8,7 +8,7 @@
       />
     </colgroup>
     <!-- 表头thead -->
-    <thead class="audio-thead" v-if="showHeader">
+    <thead class="audio-thead" :class="{'fixed-header': fixedHeader}" v-if="showHeader">
       <tr>
         <th
           v-for="(item,index) in columns"
@@ -102,6 +102,11 @@ export default {
       type: Boolean,
       default: true,
     },
+    // 表头吸顶
+    fixedHeader: {
+      type: Boolean,
+      default: true,
+    }
   },
   methods: {
     fieldValue({ row = {}, fieldPath }) {
@@ -127,7 +132,26 @@ export default {
 .audio-table {
   table-layout: fixed;
   width: 100%;
+  position: relative;
   thead.audio-thead {
+    position: relative;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 3px;
+      background-color: @primary-border-color;
+      position: absolute;
+      z-index: 2;
+    }
+
+    &.fixed-header {
+      position: sticky;
+      top: 0px;
+      background-color: #fff;
+      z-index: 1;
+    }
     tr {
       th {
         height: 38px;
@@ -141,7 +165,6 @@ export default {
         background: url('https://s2.music.126.net/style/web2/img/table.png?c4e0c285b4622c09f63a90435b5b38f1')
           no-repeat 0 9999px;
         white-space: nowrap;
-        border-top: 3px solid @primary-border-color;
         &:first-child {
           background: none;
         }

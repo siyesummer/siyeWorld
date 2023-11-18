@@ -15,6 +15,7 @@
         <span class="singer">{{singer}}</span>
       </div>
     </div>
+    <CommentPopup></CommentPopup>
     <div>
       <audio preload="auto" ref="Audio" loop :src="src" />
     </div>
@@ -24,10 +25,13 @@
 <script>
 import { fetchSongDetail, fetchSongInfo } from '../../api';
 import events from '../../modules/constants/events';
+import CommentPopup from './components/CommentPopup';
 
 export default {
   name: 'AudioPlay',
-  components: {},
+  components: {
+    CommentPopup
+  },
   props: {},
   data() {
     return {

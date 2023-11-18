@@ -19,7 +19,7 @@
     <div class="align-right">
       <slot name="pager">
         <Pagination
-          v-if="showPager"
+          v-if="showPager && !isOnepage"
           v-bind="pagination"
           @change="onPageChange"
           @showSizeChange="onPageChange"
@@ -111,7 +111,13 @@ export default {
      */
     pagination: {
       get() {
-        const { pageMeta, showSizeChanger, showQuickJumper, simple, size } = this;
+        const {
+          pageMeta,
+          showSizeChanger,
+          showQuickJumper,
+          simple,
+          size,
+        } = this;
 
         if (!pageMeta) {
           return false;
@@ -142,6 +148,12 @@ export default {
         this.$emit('input', pageMeta);
         this.$emit('paging', pageMeta);
       },
+    },
+
+    isOnepage() {
+      const { page, limit, total } = this.meta;
+
+      return total === 0 || (page === 0 && total <= limit);
     },
   },
 
