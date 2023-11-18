@@ -64,3 +64,19 @@ export function deepClone(source) {
   });
   return targetObj;
 }
+
+export function debounce(cb, delay) {
+  let timer;
+  let result;
+  return function() {
+    if (timer) clearTimeout(timer);
+
+    // eslint-disable-next-line prefer-rest-params
+    const args = [...arguments];
+    timer = setTimeout(() => {
+      result = cb.apply(this, args);
+    }, delay);
+
+    return result;
+  };
+}
