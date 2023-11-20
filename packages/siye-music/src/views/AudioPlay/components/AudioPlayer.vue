@@ -54,10 +54,16 @@ export default {
       }
     },
 
+    // 设置播放进度
     setCurrentTime(time = 0) {
       if (!this.src) return;
 
       this.$refs.audio.currentTime = time;
+    },
+
+    // 设置音量
+    setVolume(volume = 1) {
+      this.$refs.audio.volume = volume;
     },
 
     play() {

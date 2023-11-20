@@ -36,6 +36,9 @@
       </div>
     </div>
 
+    <!-- 音量 -->
+    <VolBar class="vol" @volume="handleVolume" @verticalMove="handleVolume" />
+
     <!-- 音频播放器 -->
     <AudioPlayer
       ref="Audio"
@@ -47,14 +50,14 @@
     />
 
     <!-- 评论框 -->
-    <CommentPopup />
+    <CommentPopup class="comment" />
   </div>
 </template>
 
 <script>
 import { fetchSongDetail, fetchSongInfo } from '../../api';
 import events from '../../modules/constants/events';
-import { CommentPopup, ProgressBar, AudioPlayer } from './components';
+import { CommentPopup, ProgressBar, AudioPlayer, VolBar } from './components';
 
 export default {
   name: 'AudioPlay',
@@ -62,6 +65,7 @@ export default {
     CommentPopup,
     ProgressBar,
     AudioPlayer,
+    VolBar,
   },
   props: {},
   data() {
@@ -167,6 +171,10 @@ export default {
       this.songId = id;
     },
 
+    handleVolume(volume) {
+      this.$refs.Audio.setVolume(volume);
+    },
+
     // 进度按钮拖拽标记
     handleBeforemove() {
       this.isMoving = true;
@@ -254,7 +262,7 @@ export default {
   position: relative;
   padding: 0px 5px;
   .play-btn {
-    width: 137px;
+    width: 125px;
     padding: 5px 0 0 0;
     & > span {
       display: block;
@@ -303,9 +311,6 @@ export default {
   }
   .play {
     position: relative;
-    *zoom: 1;
-    width: 608px;
-    float: left;
     .title {
       height: 28px;
       overflow: hidden;
@@ -330,6 +335,10 @@ export default {
       }
     }
   }
+
+  .vol {
+    margin: 15px 0 0 10px;
+  }
 }
 .bar-wrap {
   position: relative;
@@ -345,5 +354,9 @@ export default {
       color: #a1a1a1;
     }
   }
+}
+
+.comment {
+  margin-top: 8px;
 }
 </style>
