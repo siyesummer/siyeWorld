@@ -110,7 +110,7 @@ export default {
     },
     /**
      * 上一曲/下一曲
-     * @param {Number} step: [-1, 1]
+     * @param {Number} step: [-1, 1, 具体数值]
      */
     toPlay(step) {
       const { curIndex, audioList } = this;
@@ -119,8 +119,10 @@ export default {
 
       if (step === 1) {
         playIndex = playIndex >= audioList.length - 1 ? 0 : playIndex + 1;
-      } else {
+      } else if (step === -1) {
         playIndex = playIndex <= 0 ? audioList.length - 1 : playIndex - 1;
+      } else {
+        playIndex = step;
       }
 
       this.changeAudio(playIndex);

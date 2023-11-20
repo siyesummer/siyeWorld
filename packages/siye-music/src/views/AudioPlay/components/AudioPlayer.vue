@@ -2,11 +2,11 @@
   <audio
     preload="auto"
     ref="audio"
-    loop
     :src="src"
     @canplay="handleEvent"
     @timeupdate="handleEvent"
     @progress="handleEvent"
+    @ended="handleEvent"
   />
 </template>
 
@@ -19,10 +19,6 @@ export default {
     src: {
       type: String,
       default: '',
-    },
-    loop: {
-      type: Boolean,
-      default: true,
     },
     autoPlay: {
       type: Boolean,
@@ -51,6 +47,8 @@ export default {
         const buffered = e.target.buffered;
         // 缓存
         this.$emit('progress', buffered.end(0));
+      } else if (e.type === 'ended') {
+        this.$emit('ended');
       }
     },
 

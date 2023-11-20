@@ -39,6 +39,9 @@
     <!-- 音量 -->
     <VolBar class="vol" @volume="handleVolume" @verticalMove="handleVolume" />
 
+    <!-- 播放模式 -->
+    <PlayMode v-model="mode" />
+
     <!-- 音频播放器 -->
     <AudioPlayer
       ref="Audio"
@@ -47,6 +50,7 @@
       @autoplayed="isPlay = true"
       @timeupdate="handleTimeupdate"
       @progress="handleProgress"
+      @ended="handleEnded"
     />
 
     <!-- 评论框 -->
@@ -57,7 +61,13 @@
 <script>
 import { fetchSongDetail, fetchSongInfo } from '../../api';
 import events from '../../modules/constants/events';
-import { CommentPopup, ProgressBar, AudioPlayer, VolBar } from './components';
+import {
+  CommentPopup,
+  ProgressBar,
+  AudioPlayer,
+  VolBar,
+  PlayMode,
+} from './components';
 
 export default {
   name: 'AudioPlay',
@@ -66,6 +76,7 @@ export default {
     ProgressBar,
     AudioPlayer,
     VolBar,
+    PlayMode,
   },
   props: {},
   data() {
@@ -80,6 +91,7 @@ export default {
       currentTime: 0,
       // 缓存进度
       readyPercent: 0,
+      mode: 'loop',
     };
   },
 
@@ -113,6 +125,10 @@ export default {
 
     currentAudio() {
       return this.$store.state.siyeMusic.currentAudio;
+    },
+
+    audioList() {
+      return this.$store.state.siyeMusic.audioList;
     },
 
     currentFormat() {
@@ -169,6 +185,18 @@ export default {
 
     handlerChange({ id }) {
       this.songId = id;
+    },
+
+    handleEnded() {
+      if (this.mode === 'loop') {
+        this.toPlan(1);
+      } else if (this.mode === 'one') {
+        this.play();
+      } else if (this.mode === 'shuffle') {
+        const random = Math.floor(Math.random() * this.audioList.length);
+
+        this.toPlan(random);
+      }
     },
 
     handleVolume(volume) {
