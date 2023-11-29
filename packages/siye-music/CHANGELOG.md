@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/siyesummer/siyeWorld/compare/siye-music@0.1.6...siye-music@0.1.7) (2023-11-29)
+
+
+### Features
+
+* 播放模式切换 ([782e963](https://github.com/siyesummer/siyeWorld/commit/782e96321c78308af977e53ccce09331e1589900))
+* 网易云登录，私人歌单，歌曲评论 ([140fa3f](https://github.com/siyesummer/siyeWorld/commit/140fa3fd3c9d821f7fe7b8992c0e1e984a088795))
+* 音频进度条 ([839ec57](https://github.com/siyesummer/siyeWorld/commit/839ec57cf92d5813e056db17d7db422baee4423e))
+* 音频音量控制 ([6401054](https://github.com/siyesummer/siyeWorld/commit/64010540bc599668374397562121baa4b442ae42))
+
+
+### Bug Fixes
+
+* 登录后，先设置个人信息再获取歌单，解决因id未获取导致获取歌单失败问题 ([3690f08](https://github.com/siyesummer/siyeWorld/commit/3690f08fb68800840009e6a6115cb4aa28acdb5a))
+
 ### [0.1.6](https://github.com/siyesummer/siyeWorld/compare/siye-music@0.1.5...siye-music@0.1.6) (2020-10-22)
 
 ### [0.1.5](https://github.com/siyesummer/siyeWorld/compare/siye-music@0.1.5-alpha.0...siye-music@0.1.5) (2020-10-22)
