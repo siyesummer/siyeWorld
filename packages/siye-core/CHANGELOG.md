@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/siyesummer/siyeWorld/compare/siye-core@0.1.1...siye-core@0.1.2) (2023-11-29)
+
+
+### Features
+
+* **drag.class.js:** 文件名称调整`drag.class`=>`move.class`，新增`moveEl`移动元素配置 ([48c0f3e](https://github.com/siyesummer/siyeWorld/commit/48c0f3e6cbe24c9a11e79a370dcc9ba190282e0c))
+* **request.js:** 新增`customRequest`，支持自定义配置 ([7b88270](https://github.com/siyesummer/siyeWorld/commit/7b88270ccd44e37780e0a17012d6a1774533b1bc))
+* **utils:** `dobounce`防抖函数 ([adb7c3b](https://github.com/siyesummer/siyeWorld/commit/adb7c3bbcce493261d0f4cfc921abc59bcc27858))
+* **utils/index.js:** 新增`guid`创建uid、`deepClone`深拷贝方法 ([91f60f1](https://github.com/siyesummer/siyeWorld/commit/91f60f1453acdc3c8f36b4b42f5440bfe52866e5))
+
 ### [0.1.1](https://github.com/siyesummer/siyeWorld/compare/siye-core@0.1.1-alpha.0...siye-core@0.1.1) (2020-10-22)
 
 
