@@ -4,6 +4,9 @@
   "keywords": [
     "siye-world-package"
   ],
+  "scripts": {
+    "release": "standard-version"
+  },
   "dependencies": {
     "ant-design-vue": "^1.6.5",
     "babel-plugin-import": "^1.13.0",
