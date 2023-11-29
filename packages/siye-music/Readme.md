@@ -23,7 +23,7 @@ yarn add less less-loader -D
 {
   "scripts": {
     "serve": "yarn run start-netease-api | vue-cli-service serve",
-    "start-netease-api": "yarn node node_modules/netease-cloud-music-api/app.js"
+    "start-netease-api": "yarn node node_modules/siye-music/app.js"
   },
   "dependencies": {
     "siye-music": "^0.1.4"
