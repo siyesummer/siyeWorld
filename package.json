@@ -6,7 +6,7 @@
     "serve": "yarn run start-netease-api | yarn start-chat | vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start-netease-api": "yarn node app.js",
+    "start-netease-api": "yarn node node_modules/siye-music/app.js",
     "release": "standard-version",
     "start-chat": "yarn node node_modules/easy-chat/server.js"
   },
