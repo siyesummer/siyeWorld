@@ -31,6 +31,8 @@ function generateConf(options = {}) {
   return {
     publicPath: './', // 默认为 '/'
     lintOnSave: false,
+    // 是否需要生产环境的 source map（源映射文件，帮助开发者在浏览器的开发者工具中，将错误和日志定位到原始代码的具体位置）
+    productionSourceMap: false,
     configureWebpack: {
       // 全局代理地址设置
       // devServer: {
@@ -44,7 +46,7 @@ function generateConf(options = {}) {
         new CompressionPlugin({
           algorithm: 'gzip',
           test: /\.(js|css|html|svg)$/, // 匹配文件名
-          deleteOriginalAssets: false, // 不删除源文件
+          deleteOriginalAssets: false, // 删除源文件
           threshold: 1024, // 对超过1k的数据压缩
           minRatio: 0.8, // 压缩比
         }),
