@@ -56,7 +56,6 @@ import MoveElement from 'siye-core/src/modules/class/move.class';
 import dayjs from 'dayjs';
 import { Input } from 'ant-design-vue';
 import { guid } from 'siye-core/src/utils';
-import photo from '../../static/images/xuewei.jpg';
 import { CONNECT_URL } from '../../config/index';
 
 export default {
@@ -99,7 +98,7 @@ export default {
     return {
       socketIns: null,
       moveElementIns: null,
-      photoSrc: photo,
+      photoSrc: 'https://avatar.hitv.com/0758c44d6ce15f21b7ac05c2bea2e466/uwsUD8k9vFUv.jpg',
       chatValue: '',
       userName: '',
       uid: null,
