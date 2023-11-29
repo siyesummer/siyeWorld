@@ -5,6 +5,7 @@ const {
   host
 // eslint-disable-next-line import/no-extraneous-dependencies
 } = require('siye-core/src/utils/packageManifest');
+const CompressionPlugin = require('compression-webpack-plugin');
 const alias = require('./pathAlias');
 const defaultTheme = require('./theme');
 
@@ -39,6 +40,15 @@ function generateConf(options = {}) {
         extensions: ['.js', '.vue', '.json'],
         alias,
       },
+      plugins: [
+        new CompressionPlugin({
+          algorithm: 'gzip',
+          test: /\.(js|css|html|svg)$/, // 匹配文件名
+          deleteOriginalAssets: false, // 不删除源文件
+          threshold: 1024, // 对超过1k的数据压缩
+          minRatio: 0.8, // 压缩比
+        }),
+      ],
     },
     // 样式相关配置
     css: {
