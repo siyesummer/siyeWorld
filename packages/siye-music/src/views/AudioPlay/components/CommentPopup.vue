@@ -250,6 +250,6 @@ export default {
 
 <style>
 .ant-popover {
-  z-index: 100000;
+  z-index: 100000 !important;
 }
 </style>
