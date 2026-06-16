@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://github.com/siyesummer/siyeWorld/compare/siye-music@0.1.7...siye-music@0.1.8) (2026-06-16)
+
+
+### Features
+
+* **siye-music:** 去除ant-design-vue ([d890bbc](https://github.com/siyesummer/siyeWorld/commit/d890bbc9eb053667b5779e52e3072746bf953a42))
+
+
+### Bug Fixes
+
+* 评论弹出框z-index添加!important权重 ([a31535b](https://github.com/siyesummer/siyeWorld/commit/a31535b1eee6fa888b975e74d4c9d9a8f88bb70c))
+
 ### [0.1.7](https://github.com/siyesummer/siyeWorld/compare/siye-music@0.1.6...siye-music@0.1.7) (2023-11-29)
 
 
