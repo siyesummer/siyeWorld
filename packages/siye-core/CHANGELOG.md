@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/siyesummer/siyeWorld/compare/siye-core@0.1.2...siye-core@0.1.3) (2026-06-16)
+
+
+### Features
+
+* **siye-core:** 新增组件、去除lodash ([849fdb6](https://github.com/siyesummer/siyeWorld/commit/849fdb68e504b89b5597126cce0eaf632c12a0ba))
+
 ### [0.1.2](https://github.com/siyesummer/siyeWorld/compare/siye-core@0.1.1...siye-core@0.1.2) (2023-11-29)
 
 
