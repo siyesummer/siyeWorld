@@ -14,7 +14,11 @@
     "release:music": "yarn workspace siye-music release",
     "start-neteasy:music": "yarn workspace siye-music start-neteasy",
     "release:chat": "yarn workspace easy-chat release",
-    "start-chat:server": "yarn workspace easy-chat start-server"
+    "start-chat:server": "yarn workspace easy-chat start-server",
+    "publish:core": "node scripts/publish.js core",
+    "publish:music": "node scripts/publish.js music",
+    "publish:chat": "node scripts/publish.js chat",
+    "publish:all": "node scripts/publish.js all"
   },
   "workspaces": [
     "packages/*"
