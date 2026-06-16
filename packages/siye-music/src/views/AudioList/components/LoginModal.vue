@@ -3,8 +3,8 @@
     <Dropdown v-if="isLogin" :trigger="['click']" placement="bottomRight">
       <Avatar :src="avatarSrc"> </Avatar>
       <Menu slot="overlay" @click="handleSelect">
-        <MenuItem key="info" @click="showInfo"> 个人信息 </MenuItem>
-        <MenuItem key="logout"> 退出登录 </MenuItem>
+        <MenuItem item-key="info" @click="showInfo"> 个人信息 </MenuItem>
+        <MenuItem item-key="logout"> 退出登录 </MenuItem>
       </Menu>
     </Dropdown>
     <Avatar v-else :src="avatarSrc" @click="handleQr"></Avatar>
@@ -87,14 +87,17 @@
 
 <script>
 import {
-  Avatar,
-  Dropdown,
-  Menu,
-  FormModel,
-  Input,
-  Icon,
-  Spin,
-} from 'ant-design-vue';
+  SAvatar,
+  SDropdown,
+  SMenu,
+  SMenuItem,
+  SForm,
+  SFormItem,
+  SInput,
+  SIcon,
+  SSpin,
+  SModal,
+} from '../../../components';
 import {
   fetchLoginStatus,
   captchaSent,
@@ -110,15 +113,16 @@ export default {
   name: 'LoginModal',
 
   components: {
-    Avatar,
-    Dropdown,
-    Menu,
-    MenuItem: Menu.Item,
-    Form: FormModel,
-    FormItem: FormModel.Item,
-    AInput: Input,
-    Icon,
-    Spin,
+    Avatar: SAvatar,
+    Dropdown: SDropdown,
+    Menu: SMenu,
+    MenuItem: SMenuItem,
+    Form: SForm,
+    FormItem: SFormItem,
+    AInput: SInput,
+    Icon: SIcon,
+    Spin: SSpin,
+    AModal: SModal,
   },
 
   data() {
@@ -307,11 +311,6 @@ export default {
   },
 };
 </script>
-<style lang="less">
-.ant-modal-footer {
-  text-align: center;
-}
-</style>
 <style lang="less" scoped>
 @import '../../../styles/siye-music';
 .login-dialog {
@@ -332,7 +331,7 @@ export default {
 }
 
 .code-wrap {
-  .ant-input-affix-wrapper {
+  .s-input-affix-wrapper {
     width: inherit;
   }
   .right {

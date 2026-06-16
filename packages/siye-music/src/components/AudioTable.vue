@@ -57,7 +57,7 @@
 
 <script>
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { get } from 'lodash';
+import { get } from 'siye-core/src/utils';
 
 export default {
   name: 'STable',

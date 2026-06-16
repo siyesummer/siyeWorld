@@ -14,11 +14,11 @@
 <template>
   <div>
     <slot name="default" :pagination="pagination">
-      <Skeleton active />
+      <SSkeleton active />
     </slot>
     <div class="align-right">
       <slot name="pager">
-        <Pagination
+        <SPagination
           v-if="showPager && !isOnepage"
           v-bind="pagination"
           @change="onPageChange"
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { Skeleton, Pagination } from 'ant-design-vue';
+import { SSkeleton, SPagination } from 'siye-core/src/components';
 
 export const DEFAULT_META = Object.freeze({
   page: 0, // 当前页码
@@ -80,8 +80,8 @@ export default {
   },
 
   components: {
-    Skeleton,
-    Pagination,
+    SSkeleton,
+    SPagination,
   },
 
   data() {

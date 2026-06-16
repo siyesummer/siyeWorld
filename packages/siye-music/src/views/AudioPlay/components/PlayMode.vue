@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { Tooltip } from 'ant-design-vue';
+import { STooltip } from '../../../components';
 
 // 播放模式
 export default {
@@ -23,7 +23,7 @@ export default {
   },
 
   components: {
-    Tooltip,
+    Tooltip: STooltip,
   },
 
   data() {

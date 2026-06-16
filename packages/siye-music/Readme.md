@@ -35,28 +35,9 @@ yarn add less less-loader -D
 }
 ```
 
-### `babel.config.js`配置
-
-模块引入了`ant-design-vue`组件，需要在项目中配置按需加载
-
-```json
-{
-  "plugins": [
-    [
-      "import",
-      {
-        "libraryName": "ant-design-vue",
-        "libraryDirectory": "es",
-        "style": true
-      }
-    ]
-  ]
-}
-```
-
 ### `vue.config.js`配置
 
-`ant-design-vue`组件库使用了`less`，需要在项目中配置
+模块使用了`less`，需要在项目中配置
 
 ```JavaScript
 module.exports = {

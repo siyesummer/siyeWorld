@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { Popover } from 'ant-design-vue';
+import { SPopover } from '../../../components';
 import progressMixin from './progress.mixin';
 
 // 音量调节
@@ -34,7 +34,7 @@ export default {
   mixins: [progressMixin],
 
   components: {
-    Popover,
+    Popover: SPopover,
   },
 
   data() {
@@ -74,12 +74,15 @@ export default {
 </script>
 <style lang="less">
 .vol-pop {
-  .ant-popover-inner-content {
+  .s-popover-inner-content {
     padding: 0;
   }
 
-  &.ant-popover-placement-top > .ant-popover-content > .ant-popover-arrow {
+  // 音量条无需箭头
+  .s-popover-arrow {
+    background: transparent;
     border-color: transparent;
+    box-shadow: none;
   }
 }
 </style>

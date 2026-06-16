@@ -4,7 +4,7 @@
       v-model="visible"
       trigger="click"
       placement="topRight"
-      style="z-index:100000"
+      :overlay-style="{ zIndex: 100000 }"
     >
       <template slot="content">
         <div ref="comment" class="comment-content" @scroll="scrollDebounce">
@@ -85,17 +85,17 @@
 </template>
 
 <script>
-import { Popover, Empty, Icon } from 'ant-design-vue';
 import { debounce } from 'siye-core/src/utils';
+import { SPopover, SEmpty, SIcon } from '../../../components';
 import { commentMusic } from '../../../api/comment';
 
 export default {
   name: 'CommentPopup',
 
   components: {
-    Popover,
-    Empty,
-    Icon,
+    Popover: SPopover,
+    Empty: SEmpty,
+    Icon: SIcon,
   },
 
   data() {
@@ -245,11 +245,5 @@ export default {
       }
     }
   }
-}
-</style>
-
-<style>
-.ant-popover {
-  z-index: 100000 !important;
 }
 </style>

@@ -5,10 +5,10 @@
     "siye-world-package"
   ],
   "scripts": {
-    "release": "standard-version"
+    "release": "standard-version",
+    "start-neteasy": "node app.js"
   },
   "dependencies": {
-    "ant-design-vue": "^1.6.5",
     "babel-plugin-import": "^1.13.0",
     "js-cookie": "^3.0.5",
     "lyric": "^0.2.0",

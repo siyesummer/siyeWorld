@@ -44,9 +44,8 @@
 </template>
 
 <script>
-import { Input } from 'ant-design-vue';
 import { fetchSearchInfo } from '../../api';
-import { PaginationWrapper, AudioTable } from '../../components';
+import { PaginationWrapper, AudioTable, SInputSearch } from '../../components';
 import events from '../../modules/constants/events';
 import columns from './columns';
 import { LoginModal } from './components';
@@ -54,7 +53,7 @@ import { LoginModal } from './components';
 export default {
   name: 'AudioList',
   components: {
-    InputSearch: Input.Search,
+    InputSearch: SInputSearch,
     PaginationWrapper,
     AudioTable,
     LoginModal,
