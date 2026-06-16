@@ -5,11 +5,10 @@
     "siye-world-package"
   ],
   "scripts": {
-    "release": "standard-version"
+    "release": "standard-version",
+    "start-server": "node server.js"
   },
   "dependencies": {
-    "ant-design-vue": "^1.6.5",
-    "babel-plugin-import": "^1.13.0",
     "dayjs": "^1.10.6",
     "express": "^4.17.1",
     "siye-core": "^0.1.1",

@@ -14,10 +14,10 @@
           v-if="isEdit"
           v-model="userName"
           ref="userName"
-          :maxLength="6"
+          :maxlength="6"
           placeholder="你的昵称"
           style="display:inline-block"
-          @mousedown="e => e.stopPropagation()"
+          @mousedown.native="e => e.stopPropagation()"
           @blur="isEdit = false"
         />
       </div>
@@ -42,7 +42,7 @@
     <div class="room-footer">
       <Input
         v-model="chatValue"
-        :maxLength="25"
+        :maxlength="25"
         placeholder="和大家一起聊聊吧^_^"
         @pressEnter="handleEnter"
       />
@@ -54,7 +54,7 @@
 import io from 'socket.io/client-dist/socket.io';
 import MoveElement from 'siye-core/src/modules/class/move.class';
 import dayjs from 'dayjs';
-import { Input } from 'ant-design-vue';
+import { SInput } from 'siye-core/src/components';
 import { guid } from 'siye-core/src/utils';
 import { CONNECT_URL } from '../../config/index';
 
@@ -62,7 +62,7 @@ export default {
   name: 'EasyChat',
 
   components: {
-    Input,
+    Input: SInput,
   },
 
   props: {
