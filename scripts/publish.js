@@ -21,7 +21,7 @@ const fs = require('fs');
 const PKG_MAP = {
   core: 'siye-core',
   music: 'siye-music',
-  chat: 'easy-chat',
+  chat: '@siyesummer/easy-chat',
 };
 
 // 反向映射：也支持直接用完整包名
@@ -73,6 +73,7 @@ function publishOne(shortName) {
   console.log(`  2️⃣  发布到 npm (tag: ${tag}) ...`);
   const publishArgs = ['publish'];
   if (tag && tag !== 'latest') publishArgs.push('--tag', tag);
+  if (pkgName.startsWith('@')) publishArgs.push('--access', 'public');
   if (otp) publishArgs.push('--otp', otp);
   if (isDryRun) publishArgs.push('--dry-run');
 
