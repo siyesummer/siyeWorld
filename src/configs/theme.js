@@ -1,5 +1,5 @@
 /**
- * 项目使用的less样式的变量，同时包括ant-design-vue的自定义样式的变量
+ * 项目使用的less样式的变量
  * 通过vue.config.js文件的modifyVars引入
  */
 module.exports = {

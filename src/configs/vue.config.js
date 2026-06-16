@@ -69,30 +69,6 @@ function generateConf(options = {}) {
             name: 'vue',
             priority: 2,
           },
-          antDesign: {
-            // 拆分ant-design-vue
-            test: /[\\/]node_modules[\\/]ant-design-vue[\\/]/,
-            name: 'ant-design-vue',
-            priority: 3,
-          },
-          antDesignIcons: {
-            // 拆分ant-design-icons
-            test: /[\\/]node_modules[\\/]@ant-design[\\/]icons/,
-            name: 'ant-design-icons',
-            priority: 4,
-          },
-          moment: {
-            // 拆分moment
-            test: /[\\/]node_modules[\\/]moment/,
-            name: 'moment',
-            priority: 5,
-          },
-          lodash: {
-            // 拆分lodash
-            test: /[\\/]node_modules[\\/]lodash/,
-            name: 'lodash',
-            priority: 6,
-          },
           common: {
             // 拆分第三方库（通过npm|yarn安装的库）
             test: /[\\/]node_modules[\\/]/,

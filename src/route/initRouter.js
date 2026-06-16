@@ -1,7 +1,5 @@
 import Router from 'vue-router';
-import {
-  isFunction
-} from 'lodash';
+import { isFunction } from 'siye-core/src/utils';
 
 class SiyeRouter extends Router {
   /** 重写路由push方法 避免路由中添加了相同的路由报错问题

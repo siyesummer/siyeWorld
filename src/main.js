@@ -8,14 +8,10 @@ import App from './App';
 import routes from './routeMap';
 import store from './store';
 import './styles/app.less';
-// eslint-disable-next-line import/order
-import { Modal } from 'ant-design-vue';
 
 Vue.config.productionTip = false;
 
 Vue.use(injector);
-
-Vue.use(Modal);
 
 Vue.use(SiyeRouter);
 // 创建 router 实例，然后传 `routes` 配置
