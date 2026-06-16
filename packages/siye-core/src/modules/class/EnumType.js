@@ -1,7 +1,7 @@
 /**
  * 生成枚举对象
  */
-import { uniqueId } from 'lodash';
+import { uniqueId } from '../../utils';
 
 export default class EnumType {
   /**

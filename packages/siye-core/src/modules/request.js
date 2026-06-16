@@ -3,11 +3,9 @@
  * 使用说明：request.get('./api')
  * @requires npm:axios
  */
-import { message } from 'ant-design-vue';
 import axios from 'axios';
-import {
-  get
-} from 'lodash';
+import { get } from '../utils';
+import message from '../components/message';
 
 // netease-cloud-music-api服务端口
 const BASE_URL = 'http://localhost:3000';

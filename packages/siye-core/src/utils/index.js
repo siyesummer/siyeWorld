@@ -44,9 +44,8 @@ export function guid(len = 32, firstU = true, radix = null) {
 }
 
 /**
- * This is just a simple version of deep copy
- * Has a lot of edge cases bug
- * If you want to use a perfect deep copy, use lodash's _.cloneDeep
+ * This is just a simple version of deep copy.
+ * Has a lot of edge cases bug.
  * @param {Object} source
  * @returns {Object}
  */
@@ -79,4 +78,51 @@ export function debounce(cb, delay) {
 
     return result;
   };
+}
+
+/**
+ * 判断值是否为函数（替换 lodash _.isFunction）
+ * @param {*} value
+ * @returns {boolean}
+ */
+export function isFunction(value) {
+  return typeof value === 'function';
+}
+
+/**
+ * 安全获取深层属性值（替换 lodash _.get）
+ * 支持路径 'a.b.c' / 'a[0].b'，路径不存在时返回 defaultValue
+ * @param {Object} obj
+ * @param {string} path - 属性路径，如 'a.b.c' 或 'a[0].b'
+ * @param {*} [defaultValue]
+ * @returns {*}
+ */
+export function get(obj, path, defaultValue) {
+  if (obj == null || typeof path !== 'string') return defaultValue;
+  const keys = path.split('.');
+  let result = obj;
+  for (let i = 0; i < keys.length; i += 1) {
+    if (result == null) return defaultValue;
+    // 支持 arr[0] 形式的数组索引
+    const bracketMatch = keys[i].match(/^(.+)\[(\d+)\]$/);
+    if (bracketMatch) {
+      result = result[bracketMatch[1]];
+      if (result == null) return defaultValue;
+      result = result[Number(bracketMatch[2])];
+    } else {
+      result = result[keys[i]];
+    }
+  }
+  return result === undefined ? defaultValue : result;
+}
+
+/**
+ * 生成唯一 ID（替换 lodash _.uniqueId）
+ * @param {string} [prefix=''] - 可选前缀
+ * @returns {string}
+ */
+let idCounter = 0;
+export function uniqueId(prefix = '') {
+  idCounter += 1;
+  return `${prefix}${idCounter}`;
 }
