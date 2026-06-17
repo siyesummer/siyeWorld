@@ -6,7 +6,6 @@ const {
   // eslint-disable-next-line import/no-extraneous-dependencies
 } = require('siye-core/src/utils/packageManifest');
 const CompressionPlugin = require('compression-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const alias = require('./pathAlias');
 const defaultTheme = require('./theme');
@@ -47,11 +46,6 @@ function generateConf(options = {}) {
           deleteOriginalAssets: false, // 删除源文件
           threshold: 1024, // 对超过1k的数据压缩
           minRatio: 0.8, // 压缩比
-        }),
-        // 打包文件分析插件
-        new BundleAnalyzerPlugin({
-          analyzerPort: 8889, // 指定端口号
-          openAnalyzer: true,
         }),
       ],
     },

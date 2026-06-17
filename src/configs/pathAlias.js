@@ -9,7 +9,9 @@ const alias = {};
 
 packagesInfo.forEach(pkg => {
   // 增加包下 'src/' 路径别名
-  alias[`@${pkg.name}`] = path.join(pkg.path, 'src');
+  // scoped 包（@scope/name）取最后一段作为别名，避免 @@ 双写
+  const name = pkg.name.includes('/') ? pkg.name.split('/')[1] : pkg.name;
+  alias[`@${name}`] = path.join(pkg.path, 'src');
 });
 
 alias['@ROOT'] = path.join(host.path, 'src');
