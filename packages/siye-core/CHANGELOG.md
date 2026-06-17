@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/siyesummer/siyeWorld/compare/siye-core@0.1.3...siye-core@0.1.5) (2026-06-17)
+
+
+### Bug Fixes
+
+* **SInputSearch:** 修复打包后头部输入框样式异常问题 ([eb9047c](https://github.com/siyesummer/siyeWorld/commit/eb9047cfead4dfa3ffae3eeb640e83ada34f240c))
+
 ### [0.1.3](https://github.com/siyesummer/siyeWorld/compare/siye-core@0.1.2...siye-core@0.1.3) (2026-06-16)
 
 
