@@ -1,6 +1,7 @@
 <template>
   <div class="">
     <Popover
+      ref="popover"
       v-model="visible"
       trigger="click"
       placement="topRight"
@@ -169,6 +170,10 @@ export default {
         await this.$nextTick();
         this.$refs.comment.scrollTop = 0;
         this.total = total;
+        // 数据加载后重定位 popover
+        if (this.$refs.popover) {
+          this.$refs.popover.updatePosition();
+        }
       }
 
       this.more = more;
