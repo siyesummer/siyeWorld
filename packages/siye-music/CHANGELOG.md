@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.9](https://github.com/siyesummer/siyeWorld/compare/siye-music@0.1.8...siye-music@0.1.9) (2026-06-17)
+
+
+### Features
+
+* NeteaseCloudMusicApi包替换 ([ee53603](https://github.com/siyesummer/siyeWorld/commit/ee53603295a913d7a2a41552e0f59b27e31b0fa0))
+
 ### [0.1.8](https://github.com/siyesummer/siyeWorld/compare/siye-music@0.1.7...siye-music@0.1.8) (2026-06-16)
 
 
