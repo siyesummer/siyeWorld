@@ -6,10 +6,12 @@
         <div class="audio-list">
           <AudioList />
         </div>
-        <div class="audio-lyric"></div>
+        <div class="audio-lyric">
+          <AudioLyric :songId="currentSongId" :currentTime="lyricTime" />
+        </div>
       </div>
       <div class="audio-play">
-        <AudioPlay />
+        <AudioPlay @lyric-timeupdate="lyricTime = $event" />
       </div>
     </div>
   </div>
@@ -18,6 +20,7 @@
 <script>
 import AudioList from './AudioList/Index';
 import AudioPlay from './AudioPlay/Index';
+import AudioLyric from './AudioLyric/Index';
 import Playlist from './Playlist';
 
 export default {
@@ -28,10 +31,18 @@ export default {
   components: {
     AudioList,
     AudioPlay,
+    AudioLyric,
     Playlist,
   },
   data() {
-    return {};
+    return {
+      lyricTime: 0,
+    };
+  },
+  computed: {
+    currentSongId() {
+      return this.$store.state.siyeMusic.currentAudio?.id;
+    },
   },
   methods: {},
 };
@@ -49,15 +60,16 @@ export default {
   border: 1px solid #d3d3d3;
   .list-wrapper {
     min-height: 500px;
+    display: flex;
     .audio-list {
       width: 646px;
       border-right: 1px solid #d3d3d3;
       box-sizing: border-box;
     }
     .audio-lyric {
-      width: 250px;
-      min-width: 240px;
-      max-width: 260px;
+      width: 100%;
+      height: 560px;
+      overflow: hidden;
     }
   }
   .audio-play {

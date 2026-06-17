@@ -221,6 +221,9 @@ export default {
 
       const percent = (currentTime * 1000 * 100) / duration;
 
+      // 透传浮点秒数给歌词组件（精确到毫秒）
+      this.$emit('lyric-timeupdate', currentTime);
+
       this.currentTime = Number(currentTime).toFixed(0);
 
       // 拖动时，当前实际播放时间暂停实时更新进度条
