@@ -18,7 +18,7 @@
     </div>
 
     <!-- 歌词列表 -->
-    <div v-else ref="scrollArea" class="lyric-scroll">
+    <div v-else ref="scrollArea" class="lyric-scroll" @scroll="onUserScroll">
       <div
         v-for="(line, lineIndex) in lyricLines"
         :key="lineIndex"
@@ -27,6 +27,7 @@
           active: lineIndex === activeLineIndex,
           'lyric-meta': line.meta,
         }"
+        @dblclick="onLineClick(line)"
       >
         <!-- 元信息行（作词/作曲等） -->
         <span v-if="line.meta" class="line-text">{{ line.text }}</span>
@@ -76,6 +77,8 @@ export default {
       activeWordIndex: -1,
       wordProgress: 0,
       _lastScrollTime: 0,
+      _userScrolling: false,
+      _scrollTimer: null,
     };
   },
 
@@ -227,9 +230,32 @@ export default {
       return { color: '#333' };
     },
 
-    scrollToActiveLine() {
+    onLineClick(line) {
+      if (line.meta || !line.time || line.time < 0) return;
+      // 重置手动滚动计时器，立即恢复自动跟随
+      this._userScrolling = false;
+      clearTimeout(this._scrollTimer);
+      // 发出 seek 事件
+      this.$emit('seek', line.time / 1000);
+      // 立即滚动到双击行并激活当前行
+      this.activeLineIndex = this.lyricLines.indexOf(line);
+      this.activeWordIndex = -1;
+      this.$nextTick(() => this.scrollToActiveLine(true));
+    },
+
+    onUserScroll() {
+      this._userScrolling = true;
+      clearTimeout(this._scrollTimer);
+      // 3 秒无操作后恢复自动滚动
+      this._scrollTimer = setTimeout(() => {
+        this._userScrolling = false;
+      }, 3000);
+    },
+
+    scrollToActiveLine(force) {
+      if (!force && this._userScrolling) return;
       const now = Date.now();
-      if (now - this._lastScrollTime < 500) return;
+      if (!force && now - this._lastScrollTime < 500) return;
       this._lastScrollTime = now;
 
       const container = this.$refs.scrollArea;

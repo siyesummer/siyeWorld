@@ -7,11 +7,11 @@
           <AudioList />
         </div>
         <div class="audio-lyric">
-          <AudioLyric :songId="currentSongId" :currentTime="lyricTime" />
+          <AudioLyric :songId="currentSongId" :currentTime="lyricTime" @seek="onLyricSeek" />
         </div>
       </div>
       <div class="audio-play">
-        <AudioPlay @lyric-timeupdate="lyricTime = $event" />
+        <AudioPlay ref="audioPlay" @lyric-timeupdate="lyricTime = $event" />
       </div>
     </div>
   </div>
@@ -44,7 +44,14 @@ export default {
       return this.$store.state.siyeMusic.currentAudio?.id;
     },
   },
-  methods: {},
+  methods: {
+    onLyricSeek(timeSec) {
+      if (this.$refs.audioPlay) {
+        this.$refs.audioPlay.$refs.Audio.setCurrentTime(timeSec);
+        this.$refs.audioPlay.play();
+      }
+    },
+  },
 };
 </script>
 <style lang="less" scoped>
