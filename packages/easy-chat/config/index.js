@@ -1,7 +1,8 @@
-const LISTENING_PORT = '3030';
+const LISTENING_PORT = process.env.CHAT_PORT || '3030';
+const SERVER_HOST = process.env.SERVER_HOST || 'siyefun.top';
 
 module.exports = {
-  LISTENING_PORT, // socket.io监听端口
-  CONNECT_URL: `http://localhost:${LISTENING_PORT}`, // socket.io连接url
-  SOCKET_ORIGIN: 'http://localhost:8080' // socket.io跨域url
+  LISTENING_PORT,
+  CONNECT_URL: `http://${SERVER_HOST}:${LISTENING_PORT}`,
+  SOCKET_ORIGIN: `http://${SERVER_HOST}:8080`,
 };
