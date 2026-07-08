@@ -3,6 +3,10 @@
  */
 const generateConf = require('./src/configs/vue.config');
 
-const conf = generateConf();
+const conf = generateConf({
+  config: {
+    publicPath: '/',
+  },
+});
 
 module.exports = conf;
