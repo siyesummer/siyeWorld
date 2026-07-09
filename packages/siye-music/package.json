@@ -12,7 +12,7 @@
     "babel-plugin-import": "^1.13.0",
     "js-cookie": "^3.0.5",
     "lyric": "^0.2.0",
-    "NeteaseCloudMusicApi": "^4.13.6",
+    "NeteaseCloudMusicApi": "4.13.6",
     "siye-core": "^0.1.5"
   },
   "devDependencies": {

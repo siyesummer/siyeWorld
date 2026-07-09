@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently -n api,chat,web -c blue,green,yellow \"yarn start-neteasy:music\" \"yarn start-chat:server\" \"yarn serve\"",
+    "dev": "concurrently --kill-others-on-fail -n api,chat,web -c blue,green,yellow \"yarn start-neteasy:music\" \"yarn start-chat:server\" \"yarn serve\"",
     "serve": "cross-env NODE_OPTIONS=--openssl-legacy-provider vue-cli-service serve",
     "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider vue-cli-service build",
     "analyze": "cross-env NODE_OPTIONS=--openssl-legacy-provider vue-cli-service build --report",
