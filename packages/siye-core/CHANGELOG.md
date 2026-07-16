@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/siyesummer/siyeWorld/compare/siye-core@0.1.5...siye-core@0.1.7) (2026-07-16)
+
+
+### Features
+
+* **siye-core:** 新增STable表格组件 ([d3ed8a1](https://github.com/siyesummer/siyeWorld/commit/d3ed8a133fb1000df24752cbc9b7618cc052649e))
+
 ### [0.1.5](https://github.com/siyesummer/siyeWorld/compare/siye-core@0.1.3...siye-core@0.1.5) (2026-06-17)
 
 
