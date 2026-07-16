@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.12](https://github.com/siyesummer/siyeWorld/compare/siye-music@0.1.11...siye-music@0.1.12) (2026-07-16)
+
 ### [0.1.11](https://github.com/siyesummer/siyeWorld/compare/siye-music@0.1.10...siye-music@0.1.11) (2026-07-16)
 
 
