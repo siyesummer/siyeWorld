@@ -1,4 +1,4 @@
-import { MyWorld, FindWorld } from '../components';
+import { MyWorld, FindWorld, LogQuery } from '../components';
 
 export default [
   {
@@ -15,6 +15,14 @@ export default [
     component: FindWorld,
     meta: {
       label: '发现世界',
+    },
+  },
+  {
+    path: '/log-query',
+    name: 'logQuery',
+    component: LogQuery,
+    meta: {
+      label: '日志查询',
     },
   },
 ];

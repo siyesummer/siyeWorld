@@ -2,7 +2,15 @@
   <div class="my-world">
     <SiyeMusic />
     <EasyChat />
-    <div class="record-number">{{ recordNumber }}</div>
+    <div v-if="recordNumber" class="record-number">
+      <a
+        :href="recordUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ recordNumber }}
+      </a>
+    </div>
   </div>
 </template>
 
@@ -17,8 +25,19 @@ export default {
   },
   data() {
     return {
-      recordNumber: '\u95fdICP\u590717032186\u53f7-2',
+      recordUrl: 'https://beian.miit.gov.cn/',
     };
+  },
+  computed: {
+    recordNumber() {
+      const host = window.location.hostname;
+
+      if (host === '8.134.162.209') {
+        return '\u95fdICP\u590717032186\u53f7-2';
+      }
+
+      return '';
+    },
   },
   components: {
     SiyeMusic,
@@ -34,8 +53,20 @@ export default {
 
 .record-number {
   padding: 16px 0 24px;
-  color: #999;
   font-size: 12px;
   text-align: center;
+}
+
+.record-number a,
+.record-number a:link,
+.record-number a:visited {
+  color: rgba(55, 53, 47, 0.58) !important;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.record-number a:hover,
+.record-number a:active {
+  color: #9f2a2a !important;
 }
 </style>

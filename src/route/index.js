@@ -13,4 +13,11 @@ export default [
       label: '发现世界',
     },
   },
+  {
+    path: '/log-query',
+    name: 'logQuery',
+    meta: {
+      label: '日志查询',
+    },
+  },
 ];
