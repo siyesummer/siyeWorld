@@ -7,7 +7,7 @@ const {
   LISTENING_PORT,
   CONNECT_URL,
   CORS_ALLOW_ORIGIN,
-} = require('./config');
+} = require('./config/server');
 
 const SERVICE_NAME = 'socket';
 const CHINA_TIME_FORMATTER = new Intl.DateTimeFormat('zh-CN', {
