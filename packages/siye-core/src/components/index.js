@@ -15,6 +15,7 @@ import SMenuItem from './SMenuItem';
 import SModal from './SModal';
 import SForm from './SForm';
 import SFormItem from './SFormItem';
+import STable from './STable';
 
 export {
   SIcon,
@@ -33,4 +34,5 @@ export {
   SModal,
   SForm,
   SFormItem,
+  STable,
 };
