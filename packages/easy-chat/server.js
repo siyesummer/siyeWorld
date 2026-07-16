@@ -1,8 +1,13 @@
 const app = require('express')();
 const http = require('http').createServer(app);
 const socketIo = require('socket.io');
-const logger = require('siye-core/src/utils/logger');
-const { LISTENING_PORT, CONNECT_URL } = require('./config');
+const logger = require('./logger');
+const { createCorsOriginOption } = require('./cors');
+const {
+  LISTENING_PORT,
+  CONNECT_URL,
+  CORS_ALLOW_ORIGIN,
+} = require('./config');
 
 const SERVICE_NAME = 'socket';
 const CHINA_TIME_FORMATTER = new Intl.DateTimeFormat('zh-CN', {
@@ -67,12 +72,7 @@ app.get('/health', (req, res) => {
 
 const io = socketIo(http, {
   cors: {
-    /**
-     * 从v3开始需要显式启用跨域
-     * @see https://socket.io/docs/v3/handling-cors/
-     * @tip 调整为允许任何ip访问，解决跨域问题
-     */
-    origin: '*',
+    origin: createCorsOriginOption(CORS_ALLOW_ORIGIN),
   }
 });
 
@@ -82,23 +82,20 @@ io.on('connection', socket => {
     clientIp: resolveClientIp(socket),
     transport: socket.conn.transport.name,
   });
-  // 客户端新用户链接
+
   socket.on('linkStart', msg => {
     writeLog('INFO', 'linkStart', 'received linkStart event', {
       socketId: socket.id,
       payload: msg,
     });
-    // 通知所有客户端
     io.emit('linkSuccess', msg);
   });
 
-  // 客户端用户发送的消息
   socket.on('clientMsg', msg => {
     writeLog('INFO', 'clientMsg', 'received client message', {
       socketId: socket.id,
       payload: msg,
     });
-    // 返回给所有客户端
     io.emit('backClientMsg', msg);
   });
 
