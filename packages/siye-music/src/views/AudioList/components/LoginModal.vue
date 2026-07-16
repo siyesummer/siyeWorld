@@ -132,8 +132,8 @@ export default {
         captcha: '',
       },
       userInfo: {
-        phone: '15797717425',
-        password: ' zhang1221lxq',
+        phone: '',
+        password: '',
       },
       qrVisible: false,
       qrSrc: '',
