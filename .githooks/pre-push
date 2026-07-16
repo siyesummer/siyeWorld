@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -eu
+
+echo "[pre-push] Running siyeWorld verification..."
+yarn verify

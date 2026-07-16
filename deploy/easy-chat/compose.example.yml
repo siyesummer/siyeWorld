@@ -1,0 +1,19 @@
+name: easy-chat
+
+services:
+  easy-chat:
+    image: ${EASY_CHAT_IMAGE:?EASY_CHAT_IMAGE is required}
+    restart: unless-stopped
+    init: true
+    environment:
+      PORT: 3030
+      SERVER_HOST: 0.0.0.0
+      CORS_ALLOW_ORIGIN: ${EASY_CHAT_CORS_ALLOW_ORIGIN:?EASY_CHAT_CORS_ALLOW_ORIGIN is required}
+      TZ: Asia/Shanghai
+    ports:
+      - "${EASY_CHAT_BIND_ADDRESS:-127.0.0.1}:${EASY_CHAT_HOST_PORT:-3130}:3030"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

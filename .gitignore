@@ -22,3 +22,6 @@ yarn-error.log*
 *.sw?
 
 .claude
+
+# Runtime deployment files
+deploy/**/.env

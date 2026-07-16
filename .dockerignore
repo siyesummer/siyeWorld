@@ -1,0 +1,15 @@
+*
+!.dockerignore
+!deploy/
+deploy/*
+!deploy/easy-chat/
+!deploy/easy-chat/**
+!packages/
+packages/*
+!packages/easy-chat/
+packages/easy-chat/*
+!packages/easy-chat/server.js
+!packages/easy-chat/config/
+!packages/easy-chat/config/server.js
+!packages/easy-chat/cors.js
+!packages/easy-chat/logger.js
