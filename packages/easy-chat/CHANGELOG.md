@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/siyesummer/siyeWorld/compare/easy-chat@0.0.3...easy-chat@0.0.4) (2026-07-16)
+
+
+### Features
+
+* **easy-chat:** 信息支持永久化存储、siye-core升级到0.1.7 ([22b1354](https://github.com/siyesummer/siyeWorld/commit/22b1354af252fde5f3fb242c6b49c67b133002b6))
+* **easy-chat.js:** 添加日志信息、时区调整为上海 ([72323ab](https://github.com/siyesummer/siyeWorld/commit/72323ab5fb28ea3ceb2050f60449b653b3635c42))
+
 ### [0.0.3](https://github.com/siyesummer/siyeWorld/compare/easy-chat@0.0.2...easy-chat@0.0.3) (2026-06-17)
 
 
