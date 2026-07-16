@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.11](https://github.com/siyesummer/siyeWorld/compare/siye-music@0.1.10...siye-music@0.1.11) (2026-07-16)
+
+
+### Features
+
+* **siye-music/app.js:** 添加日志、时区调整、NeteaseCloudMusicApi锁定4.13.6版本 ([03ea27b](https://github.com/siyesummer/siyeWorld/commit/03ea27b1ee18f91e17c9d51364e8139849f3a7d4))
+* 歌词展示 ([57d0b28](https://github.com/siyesummer/siyeWorld/commit/57d0b28af13040b5e515e2f3ec8d7fe1fdc20cf4))
+* 双击歌词跳转播放 ([f863d99](https://github.com/siyesummer/siyeWorld/commit/f863d9991406d382c8ac0e57ad6b38eaefcdf918))
+
+
+### Bug Fixes
+
+* 去除多余信息 ([56676c9](https://github.com/siyesummer/siyeWorld/commit/56676c9ba9d26bf23acd60f5da3ec924049a9ea7))
+
 ### [0.1.10](https://github.com/siyesummer/siyeWorld/compare/siye-music@0.1.9...siye-music@0.1.10) (2026-06-17)
 
 ### [0.1.9](https://github.com/siyesummer/siyeWorld/compare/siye-music@0.1.8...siye-music@0.1.9) (2026-06-17)
