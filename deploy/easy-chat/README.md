@@ -23,21 +23,36 @@ Docker 镜像版本与 npm 包 `@siyesummer/easy-chat` 的版本相互独立：n
 
 ## 运行时配置
 
-| 环境变量 | 默认值 | 说明 |
+以下变量由服务器 `deploy/easy-chat/.env` 提供，经 Compose 传入容器；它们不会修改已经编译进浏览器 JavaScript 的前端地址。
+
+| 环境变量 | 要求 | 说明 |
 | --- | --- | --- |
-| `PORT` | `3030` | 容器内 HTTP / Socket.IO 端口 |
-| `SERVER_HOST` | `localhost` | 启动日志中使用的主机名，容器建议设置 `0.0.0.0` |
-| `CONNECT_URL` | 根据 host/port 生成 | 仅用于启动日志 |
-| `CORS_ALLOW_ORIGIN` | `*` | Socket.IO 允许的 Origin，支持逗号分隔多个值 |
+| `PORT` | 必填 | 容器内 HTTP / Socket.IO 端口，由 Compose 明确注入 |
+| `CORS_ALLOW_ORIGIN` | 必填 | Socket.IO 允许的 Origin，支持逗号分隔多个值 |
+
+部署 `.env` 中使用 `EASY_CHAT_CONTAINER_PORT` 生成容器的 `PORT` 和端口映射目标；镜像内不提供端口或 CORS 默认值，缺少配置时服务会直接退出并指出缺失变量。
 | `TZ` | `Asia/Shanghai` | 容器时区 |
 
 多 Origin 示例：
 
 ```dotenv
-CORS_ALLOW_ORIGIN=http://localhost:8080,http://127.0.0.1:8080,http://siyefun.top,https://music.siyes.cn
+CORS_ALLOW_ORIGIN=http://localhost:8080,http://127.0.0.1:8080,http://106.52.222.106:8090,https://music.siyes.cn
 ```
 
 未授权 Origin 的 Socket.IO 握手会被拒绝；无 `Origin` 的服务器内健康检查仍允许。
+
+## 前端构建配置
+
+仓库根 `.env.example` 记录浏览器构建时使用的变量。本地联调时复制为不会提交 Git 的 `.env.local`：
+
+```dotenv
+VUE_APP_MUSIC_API_BASE_URL=http://localhost:3000
+VUE_APP_SOCKET_URL=http://localhost:3030
+VUE_APP_CHAT_HISTORY_API_BASE_URL=http://localhost:8081
+VUE_APP_LOG_SERVER_BASE_URL=http://localhost:8081
+```
+
+Vue CLI 只会向浏览器代码注入 `VUE_APP_` 前缀变量。四项地址均为必填，源码不提供默认地址。修改 `.env.local` 后必须重启 `yarn serve`；服务器 `deploy/easy-chat/.env` 与前端 `.env.local` 是两套不同作用域的配置。
 
 ## 更新运行时依赖
 

@@ -5,10 +5,11 @@
  */
 import axios from 'axios';
 import { get } from '../utils';
+import requireEnv from '../utils/env';
 import message from '../components/message';
 
-// netease-cloud-music-api服务端口
-const BASE_URL = 'http://localhost:3000';
+// music-api 地址只允许通过 Vue 环境文件注入，不在源码中提供回退地址。
+const BASE_URL = requireEnv('VUE_APP_MUSIC_API_BASE_URL');
 
 const supportMethods = [
   'request',
@@ -24,7 +25,6 @@ const supportMethods = [
   'download'
 ];
 
-
 function getiframeDocument(iframe) {
   let iframeDoc = iframe.contentWindow || iframe.contentDocument;
   if (iframeDoc.document) {
@@ -32,7 +32,6 @@ function getiframeDocument(iframe) {
   }
   return iframeDoc;
 }
-
 
 function onreset(iframe, resolve, reject) {
   setTimeout(() => {

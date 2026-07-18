@@ -6,12 +6,13 @@ services:
     restart: unless-stopped
     init: true
     environment:
-      PORT: 3030
-      SERVER_HOST: 0.0.0.0
+      # 以下变量传入容器，由 packages/easy-chat/config/server.js 在运行时读取。
+      PORT: ${EASY_CHAT_CONTAINER_PORT:?EASY_CHAT_CONTAINER_PORT is required}
       CORS_ALLOW_ORIGIN: ${EASY_CHAT_CORS_ALLOW_ORIGIN:?EASY_CHAT_CORS_ALLOW_ORIGIN is required}
       TZ: Asia/Shanghai
     ports:
-      - "${EASY_CHAT_BIND_ADDRESS:-127.0.0.1}:${EASY_CHAT_HOST_PORT:-3130}:3030"
+      # .env 同时控制宿主机端口和容器监听端口。
+      - "${EASY_CHAT_BIND_ADDRESS:?EASY_CHAT_BIND_ADDRESS is required}:${EASY_CHAT_HOST_PORT:?EASY_CHAT_HOST_PORT is required}:${EASY_CHAT_CONTAINER_PORT:?EASY_CHAT_CONTAINER_PORT is required}"
     logging:
       driver: json-file
       options:

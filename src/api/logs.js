@@ -1,6 +1,8 @@
 import axios from 'axios';
+import requireEnv from '../configs/env';
 
-const LOG_SERVER_BASE_URL = 'http://106.52.222.106:8181';
+// 日志服务地址只允许通过 Vue 环境文件注入，不在源码中提供回退地址。
+const LOG_SERVER_BASE_URL = requireEnv('VUE_APP_LOG_SERVER_BASE_URL');
 
 function trimTrailingSlash(value = '') {
   return value.replace(/\/$/, '');

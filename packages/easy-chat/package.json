@@ -6,10 +6,11 @@
   ],
   "scripts": {
     "release": "standard-version",
-    "start-server": "node server.js"
+    "start-server": "node -r dotenv/config server.js dotenv_config_path=.env.local"
   },
   "dependencies": {
     "dayjs": "^1.10.6",
+    "dotenv": "^8.2.0",
     "express": "4.22.2",
     "siye-core": "^0.1.7",
     "socket.io": "4.8.3"

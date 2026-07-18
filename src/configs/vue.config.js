@@ -1,25 +1,12 @@
 const rootDir = process.cwd();
 // eslint-disable-next-line import/no-extraneous-dependencies
 const logger = require('siye-core/src/utils/logger');
-const {
-  host,
-  // eslint-disable-next-line import/no-extraneous-dependencies
-} = require('siye-core/src/utils/packageManifest');
 const CompressionPlugin = require('compression-webpack-plugin');
 
 const alias = require('./pathAlias');
 const defaultTheme = require('./theme');
 
-const { target } = (host.info && host.info.proxy) || {};
-
-// const proxy = {
-//   '/*': {
-//     target,
-//     changeOrigin: true,
-//   },
-// };
 logger.info(`[rootDir] 根文件夹路径 ${rootDir}`);
-logger.info(`[Proxy setup] 本地服务代理到 ${target}`);
 
 function generateConf(options = {}) {
   const { config: optionConfig = {}, theme = defaultTheme } = options;
@@ -30,10 +17,6 @@ function generateConf(options = {}) {
     // 是否需要生产环境的 source map（源映射文件，帮助开发者在浏览器的开发者工具中，将错误和日志定位到原始代码的具体位置）
     productionSourceMap: false,
     configureWebpack: {
-      // 全局代理地址设置
-      // devServer: {
-      //   proxy,
-      // },
       resolve: {
         extensions: ['.js', '.vue', '.json'],
         alias,

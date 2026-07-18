@@ -5,6 +5,9 @@
  *   yarn deploy          # 构建并打包到 deploy/ 目录
  *   yarn deploy --dry    # 仅查看会生成哪些文件，不实际执行
  *
+ * @deprecated 这是早期 Windows 目录部署生成器，仅保留历史兼容。
+ * 当前正式发布使用 deploy/ + Docker/Compose，并由 .env 类文件注入配置。
+ *
  * 生成产物 deploy/ 目录结构:
  *   dist/                  Vue 前端构建产物
  *   app.js                 siye-music Netease API 入口

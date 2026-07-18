@@ -3,9 +3,10 @@ node_modules
 /dist
 /siyeWorldDeploy
 
-# local env files
+# 个人机器专用覆盖文件；标准 development/production 配置需要提交。
 .env.local
 .env.*.local
+packages/*/.env.local
 
 # Log files
 npm-debug.log*

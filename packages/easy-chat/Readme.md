@@ -114,6 +114,17 @@ methods: {
 
 前端保存和查询历史消息使用 `config/index.js` 中的 `CHAT_HISTORY_API_BASE_URL`。Socket Server 不再读取该配置，也不会直接访问 `linux-server`。
 
+## 环境配置
+
+浏览器端 `VUE_APP_SOCKET_URL`、`VUE_APP_CHAT_HISTORY_API_BASE_URL` 由仓库根 `.env` 类文件注入；Node 服务端 `PORT`、`CORS_ALLOW_ORIGIN` 由当前包的 `.env.local` 或部署 Compose 注入。源码不提供地址、端口或 CORS 回退值，缺少配置时会直接报错。
+
+本地启动 Node 服务前，从 `.env.example` 复制配置：
+
+```bash
+cp .env.example .env.local
+yarn start-server
+```
+
 ## 聊天身份缓存
 
 组件会使用浏览器 `localStorage` 保存当前聊天身份：

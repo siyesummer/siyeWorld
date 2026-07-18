@@ -5,7 +5,6 @@ const logger = require('./logger');
 const { createCorsOriginOption } = require('./cors');
 const {
   LISTENING_PORT,
-  CONNECT_URL,
   CORS_ALLOW_ORIGIN,
 } = require('./config/server');
 
@@ -113,10 +112,13 @@ io.on('connection', socket => {
   });
 });
 
+http.on('error', error => {
+  writeLog('ERROR', 'listenError', error && error.stack ? error.stack : String(error));
+  process.exit(1);
+});
+
 http.listen(LISTENING_PORT, () => {
-  writeLog('INFO', 'startup', `listening on *:${LISTENING_PORT}`, {
-    connectUrl: CONNECT_URL,
-  });
+  writeLog('INFO', 'startup', `listening on *:${LISTENING_PORT}`);
 });
 
 process.on('uncaughtException', error => {

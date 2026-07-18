@@ -1,0 +1,7 @@
+services:
+  siye-world:
+    image: ${SIYE_WORLD_IMAGE:?请在 .env 中设置 SIYE_WORLD_IMAGE}
+    container_name: siye-world
+    restart: unless-stopped
+    ports:
+      - "${SIYE_WORLD_BIND_ADDRESS:?请设置 SIYE_WORLD_BIND_ADDRESS}:${SIYE_WORLD_HOST_PORT:?请设置 SIYE_WORLD_HOST_PORT}:80"

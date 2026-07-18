@@ -6,13 +6,14 @@
     "dev": "concurrently --kill-others-on-fail -n api,chat,web -c blue,green,yellow \"yarn start-neteasy:music\" \"yarn start-chat:server\" \"yarn serve\"",
     "serve": "cross-env NODE_OPTIONS=--openssl-legacy-provider vue-cli-service serve",
     "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider vue-cli-service build",
+    "build:pages": "cross-env NODE_OPTIONS=--openssl-legacy-provider vue-cli-service build --mode pages",
     "analyze": "cross-env NODE_OPTIONS=--openssl-legacy-provider vue-cli-service build --report",
     "deploy": "node scripts/deploy.js",
     "start:deploy": "node scripts/startDeploy.js",
     "stop:deploy": "node siyeWorldDeploy/stop.js",
     "lint": "vue-cli-service lint",
     "verify": "yarn lint && yarn verify:easy-chat",
-    "verify:easy-chat": "node --check packages/easy-chat/server.js && node --check packages/easy-chat/config/index.js && node --check packages/easy-chat/config/server.js && node --check packages/easy-chat/cors.js && node --check packages/easy-chat/logger.js && node --check packages/easy-chat/test/socket-roundtrip.js && node packages/easy-chat/test/cors.test.js",
+    "verify:easy-chat": "node --check packages/easy-chat/server.js && node --check packages/easy-chat/config/env.js && node --check packages/easy-chat/config/index.js && node --check packages/easy-chat/config/server.js && node --check packages/easy-chat/cors.js && node --check packages/easy-chat/logger.js && node --check packages/easy-chat/test/socket-roundtrip.js && node packages/easy-chat/test/config.test.js && node packages/easy-chat/test/cors.test.js",
     "start-netease-api": "yarn node node_modules/siye-music/app.js",
     "release": "standard-version",
     "release:core": "yarn workspace siye-core release",
@@ -75,8 +76,5 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ],
-  "proxy": {
-    "target": "http://localhost:3000/"
-  }
+  ]
 }
