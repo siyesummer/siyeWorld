@@ -17,6 +17,7 @@ COPY --chown=node:node packages/easy-chat/config/server.js ./config/server.js
 COPY --chown=node:node packages/easy-chat/config/env.js ./config/env.js
 COPY --chown=node:node packages/easy-chat/cors.js ./cors.js
 COPY --chown=node:node packages/easy-chat/logger.js ./logger.js
+COPY --chown=node:node packages/easy-chat/fileLogger.js ./fileLogger.js
 
 USER node
 

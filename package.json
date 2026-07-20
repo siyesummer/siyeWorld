@@ -13,7 +13,7 @@
     "stop:deploy": "node siyeWorldDeploy/stop.js",
     "lint": "vue-cli-service lint",
     "verify": "yarn lint && yarn verify:easy-chat",
-    "verify:easy-chat": "node --check packages/easy-chat/server.js && node --check packages/easy-chat/config/env.js && node --check packages/easy-chat/config/index.js && node --check packages/easy-chat/config/server.js && node --check packages/easy-chat/cors.js && node --check packages/easy-chat/logger.js && node --check packages/easy-chat/test/socket-roundtrip.js && node packages/easy-chat/test/config.test.js && node packages/easy-chat/test/cors.test.js",
+    "verify:easy-chat": "node --check packages/easy-chat/server.js && node --check packages/easy-chat/config/env.js && node --check packages/easy-chat/config/index.js && node --check packages/easy-chat/config/server.js && node --check packages/easy-chat/cors.js && node --check packages/easy-chat/logger.js && node --check packages/easy-chat/fileLogger.js && node --check packages/easy-chat/test/socket-roundtrip.js && node packages/easy-chat/test/config.test.js && node packages/easy-chat/test/cors.test.js && node packages/easy-chat/test/file-logger.test.js",
     "start-netease-api": "yarn node node_modules/siye-music/app.js",
     "release": "standard-version",
     "release:core": "yarn workspace siye-core release",

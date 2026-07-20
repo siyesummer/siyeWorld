@@ -9,7 +9,11 @@ services:
       # 以下变量传入容器，由 packages/easy-chat/config/server.js 在运行时读取。
       PORT: ${EASY_CHAT_CONTAINER_PORT:?EASY_CHAT_CONTAINER_PORT is required}
       CORS_ALLOW_ORIGIN: ${EASY_CHAT_CORS_ALLOW_ORIGIN:?EASY_CHAT_CORS_ALLOW_ORIGIN is required}
+      LOG_FILE: ${EASY_CHAT_LOG_FILE}
+      ERROR_LOG_FILE: ${EASY_CHAT_ERROR_LOG_FILE}
       TZ: Asia/Shanghai
+    volumes:
+      - ${EASY_CHAT_LOG_DIR:-./logs}:/var/log/siye
     ports:
       # .env 同时控制宿主机端口和容器监听端口。
       - "${EASY_CHAT_BIND_ADDRESS:?EASY_CHAT_BIND_ADDRESS is required}:${EASY_CHAT_HOST_PORT:?EASY_CHAT_HOST_PORT is required}:${EASY_CHAT_CONTAINER_PORT:?EASY_CHAT_CONTAINER_PORT is required}"

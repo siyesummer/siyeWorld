@@ -14,7 +14,7 @@
 正式环境使用明确版本：
 
 ```text
-siyesummer/easy-chat:0.0.1
+siyesummer/easy-chat:0.0.2
 ```
 
 每次发布还会生成 `sha-<git-commit-sha>` 追踪标签。正式 Compose 不使用 `latest`。
@@ -29,9 +29,11 @@ Docker 镜像版本与 npm 包 `@siyesummer/easy-chat` 的版本相互独立：n
 | --- | --- | --- |
 | `PORT` | 必填 | 容器内 HTTP / Socket.IO 端口，由 Compose 明确注入 |
 | `CORS_ALLOW_ORIGIN` | 必填 | Socket.IO 允许的 Origin，支持逗号分隔多个值 |
+| `LOG_FILE` | 可选 | 普通信息日志文件；生产 Compose 指向 `/var/log/siye/socket.log` |
+| `ERROR_LOG_FILE` | 可选 | 警告和错误日志文件；生产 Compose 指向 `/var/log/siye/socket-error.log` |
+| `TZ` | `Asia/Shanghai` | 容器时区 |
 
 部署 `.env` 中使用 `EASY_CHAT_CONTAINER_PORT` 生成容器的 `PORT` 和端口映射目标；镜像内不提供端口或 CORS 默认值，缺少配置时服务会直接退出并指出缺失变量。
-| `TZ` | `Asia/Shanghai` | 容器时区 |
 
 多 Origin 示例：
 
@@ -40,6 +42,8 @@ CORS_ALLOW_ORIGIN=http://localhost:8080,http://127.0.0.1:8080,http://106.52.222.
 ```
 
 未授权 Origin 的 Socket.IO 握手会被拒绝；无 `Origin` 的服务器内健康检查仍允许。
+
+生产环境把宿主机 `/var/log/siye-production` 以读写方式挂载到容器 `/var/log/siye`，由 `LOG_FILE` 和 `ERROR_LOG_FILE` 启用文件日志双写。stdout/stderr 仍保留给 `docker logs`；未配置两个文件路径时不创建日志文件，现有 systemd 运行方式不受影响。
 
 ## 前端构建配置
 
