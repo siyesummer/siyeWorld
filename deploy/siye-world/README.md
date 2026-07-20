@@ -7,6 +7,7 @@
 - Docker Hub：`siyesummer/siye-world`
 - 容器端口：`80`
 - 健康检查：`GET /health`
+- 发布信息：`GET /release.json`（从 `0.0.2` 开始）
 - 支持架构：`linux/amd64`、`linux/arm64`
 - 构建运行时：Node.js 20
 - 静态服务器：Nginx 1.27 Alpine
@@ -18,6 +19,20 @@ siyesummer/siye-world:0.0.1
 ```
 
 每次发布还会生成 `sha-<git-commit-sha>` 追踪标签。
+
+从 `0.0.2` 开始，发布 Workflow 会把自动计算的镜像版本和源码 commit 注入镜像。运行中的版本可以直接查询：
+
+```shell
+curl http://127.0.0.1:8088/release.json
+```
+
+响应示例：
+
+```json
+{"service":"siye-world","version":"0.0.2","revision":"<git-commit-sha>"}
+```
+
+该响应使用 `Cache-Control: no-store`，用于部署升级、回滚和排障时确认实际运行版本。相同信息也写入镜像的 OCI `version`、`revision` 标签。
 
 ## 当前演练服务地址
 
@@ -47,6 +62,8 @@ VUE_APP_LOG_SERVER_BASE_URL=http://106.52.222.106:8090
 ```shell
 docker build \
   -f deploy/siye-world/Dockerfile \
+  --build-arg APP_VERSION=local \
+  --build-arg APP_REVISION=working-tree \
   -t siye-world:local .
 ```
 
@@ -91,8 +108,9 @@ curl -fsS http://127.0.0.1:8088/health
 2. 将 `SIYE_WORLD_IMAGE` 改为新的固定版本。
 3. 执行 `docker compose pull siye-world`。
 4. 执行 `docker compose config` 检查解析结果。
-5. 执行 `docker compose up -d --no-build siye-world edge-nginx`。
-6. 验证容器健康、SPA 回退、静态资源、音乐、Socket、聊天历史和日志页面。
+5. 使用 `--no-deps --force-recreate` 只重建 `siye-world`，等待其健康。
+6. 使用 `--no-deps --force-recreate` 只重建 `edge-nginx`，使 Nginx 重新解析前端容器的 Docker IP。
+7. 验证 `/release.json`、容器健康、SPA 回退、静态资源、音乐、Socket、聊天历史和日志页面。
 
 回滚时恢复上一镜像版本并重新执行 `pull` 与 `up -d`。
 
@@ -103,7 +121,8 @@ curl -fsS http://127.0.0.1:8088/health
 1. 安装锁定依赖并执行仓库校验。
 2. 从 `siye-world-image-v*` Tag 计算独立镜像版本，首次为 `0.0.1`。
 3. 构建并推送多架构版本标签和 commit SHA 标签。
-4. 使用本文件同步 Docker Hub Description。
-5. 创建 `siye-world-image-v<version>` Git Tag 和 GitHub Release。
+4. 将发布版本和 commit 注入 `/release.json` 与 OCI 镜像标签。
+5. 使用本文件同步 Docker Hub Description。
+6. 创建 `siye-world-image-v<version>` Git Tag 和 GitHub Release。
 
 仓库需要 `DOCKERHUB_USERNAME` 和 `DOCKERHUB_TOKEN` Secrets；同步 Description 时 Token 需要 `Read, Write, Delete` 权限。

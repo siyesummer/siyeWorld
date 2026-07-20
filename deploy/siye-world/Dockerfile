@@ -23,8 +23,20 @@ RUN yarn build
 
 FROM ${NGINX_IMAGE}
 
+ARG APP_VERSION=dev
+ARG APP_REVISION=unknown
+
+LABEL org.opencontainers.image.title="siye-world" \
+    org.opencontainers.image.version="${APP_VERSION}" \
+    org.opencontainers.image.revision="${APP_REVISION}"
+
 COPY deploy/siye-world/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/dist /usr/share/nginx/html
+
+RUN printf '{"service":"siye-world","version":"%s","revision":"%s"}\n' \
+    "$APP_VERSION" \
+    "$APP_REVISION" \
+    > /usr/share/nginx/html/release.json
 
 EXPOSE 80
 
