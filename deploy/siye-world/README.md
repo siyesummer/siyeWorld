@@ -12,10 +12,11 @@
 - 构建运行时：Node.js 20
 - 静态服务器：Nginx 1.27 Alpine
 
-准生产演练固定明确版本，不使用 `latest`：
+当前已经冻结的准生产演练版本，不使用 `latest`：
 
 ```text
 siyesummer/siye-world:0.0.1
+siyesummer/siye-world:0.0.2
 ```
 
 每次发布还会生成 `sha-<git-commit-sha>` 追踪标签。
@@ -34,26 +35,20 @@ curl http://127.0.0.1:8088/release.json
 
 该响应使用 `Cache-Control: no-store`，用于部署升级、回滚和排障时确认实际运行版本。相同信息也写入镜像的 OCI `version`、`revision` 标签。
 
-## 当前演练服务地址
+## 正式候选服务地址
 
 正式发布 Workflow 读取并校验仓库根 `.env.production`；Dockerfile 只复制这份文件，由 Vue CLI 在 `yarn build` 时自动读取，不再维护第二套构建参数：
 
 ```dotenv
-VUE_APP_MUSIC_API_BASE_URL=http://106.52.222.106:8090/music-api
-VUE_APP_SOCKET_URL=http://106.52.222.106:8090
-VUE_APP_CHAT_HISTORY_API_BASE_URL=http://106.52.222.106:8090
-VUE_APP_LOG_SERVER_BASE_URL=http://106.52.222.106:8090
+VUE_APP_MUSIC_API_BASE_URL=https://music-api.siyes.cn
+VUE_APP_SOCKET_URL=https://socket.siyes.cn
+VUE_APP_CHAT_HISTORY_API_BASE_URL=https://linux-api.siyes.cn
+VUE_APP_LOG_SERVER_BASE_URL=https://linux-api.siyes.cn
 ```
 
-这些值会编译进浏览器 JavaScript，不是容器启动后读取的运行时变量。当前域名仍在备案，`0.0.1` 作为准生产演练镜像，通过 Linux edge-nginx 的 `106.52.222.106:8090` 完成真实业务验证：
+这些值会编译进浏览器 JavaScript，不是容器启动后读取的运行时变量。`0.0.1` 和 `0.0.2` 继续冻结为 `106.52.222.106:8090` 演练版本；切换正式域名后的下一次 patch 发布为 `0.0.3` 正式候选，不能覆盖旧标签。
 
-| 演练路径 | 上游服务 | 说明 |
-| --- | --- | --- |
-| `106.52.222.106:8090/music-api/` | `music-api:3000` | 转发时移除 `/music-api` 前缀 |
-| `106.52.222.106:8090/socket.io/` | `easy-chat:3030` | 支持 polling 和 WebSocket Upgrade |
-| `106.52.222.106:8090/api/` | `linux-server:8081` | 聊天历史、消息保存和日志接口 |
-
-备案和 HTTPS 完成后的正式方案会将 `.env.production` 切换为 `https://music-api.siyes.cn`、`https://socket.siyes.cn`、`https://linux-api.siyes.cn`。届时前端部署服务器只负责静态文件和 SPA 回退，无需增加业务代理，其他客户端也可直接调用独立服务域名。该变化必须发布下一新版本，例如 `0.0.2`，不能覆盖已冻结的演练版 `0.0.1`。
+正式前端只负责静态文件和 SPA 回退，不承担业务接口反向代理。三个业务域名分别由正式 edge-nginx 转发到 `music-api`、`easy-chat` 和 `linux-server`；其他客户端也可以直接调用独立服务域名。
 
 第三方服务端程序直接调用独立域名不受浏览器 CORS 限制；第三方浏览器站点仍需将自己的精确 Origin 加入对应服务 CORS 白名单，或使用后续单独设计的公开 API 策略。
 
@@ -72,7 +67,7 @@ docker build \
 ## 多环境文件
 
 - `.env.development`：由 `yarn serve` 自动读取，使用 localhost 的 `3000/3030/8081`。
-- `.env.production`：由 `yarn build`、镜像 Dockerfile 和发布 Workflow 共同读取，是唯一发布构建地址来源；当前演练阶段使用 `106.52.222.106:8090`，备案完成后切换为独立 HTTPS 域名并发布新版本。
+- `.env.production`：由 `yarn build`、镜像 Dockerfile 和发布 Workflow 共同读取，是唯一发布构建地址来源；当前已切换为三个独立 HTTPS 域名，用于构建 `0.0.3` 正式候选镜像。
 - `.env.pages`：由 `yarn build:pages` 读取，复用当前演练 API 地址，同时使用 `/siyeWorld/` 资源前缀和 `hash` 路由。
 - `.env.*.local`：仅用于个人临时覆盖，不提交 Git；它的优先级高于标准模式文件，遗留文件可能造成构建地址被意外覆盖。
 
