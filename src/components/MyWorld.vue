@@ -32,7 +32,7 @@ export default {
     recordNumber() {
       const host = window.location.hostname;
 
-      if (host === '8.134.162.209') {
+      if (['siyefun.top', 'www.siyefun.top'].includes(host)) {
         return '\u95fdICP\u590717032186\u53f7-2';
       }
 

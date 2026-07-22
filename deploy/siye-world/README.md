@@ -46,7 +46,7 @@ VUE_APP_CHAT_HISTORY_API_BASE_URL=https://linux-api.siyes.cn
 VUE_APP_LOG_SERVER_BASE_URL=https://linux-api.siyes.cn
 ```
 
-这些值会编译进浏览器 JavaScript，不是容器启动后读取的运行时变量。`0.0.1` 和 `0.0.2` 继续冻结为 `106.52.222.106:8090` 演练版本；切换正式域名后的下一次 patch 发布为 `0.0.3` 正式候选，不能覆盖旧标签。
+这些值会编译进浏览器 JavaScript，不是容器启动后读取的运行时变量。`0.0.1` 和 `0.0.2` 继续冻结为历史 IP 端口演练版本；切换正式域名后的下一次 patch 发布为 `0.0.3` 正式候选，不能覆盖旧标签。仓库中的 `203.0.113.10` 是 RFC 5737 文档专用地址，只用于代称腾讯云服务器，不能用于真实连接。
 
 正式前端只负责静态文件和 SPA 回退，不承担业务接口反向代理。三个业务域名分别由正式 edge-nginx 转发到 `music-api`、`easy-chat` 和 `linux-server`；其他客户端也可以直接调用独立服务域名。
 
@@ -68,12 +68,12 @@ docker build \
 
 - `.env.development`：由 `yarn serve` 自动读取，使用 localhost 的 `3000/3030/8081`。
 - `.env.production`：由 `yarn build`、镜像 Dockerfile 和发布 Workflow 共同读取，是唯一发布构建地址来源；当前已切换为三个独立 HTTPS 域名，用于构建 `0.0.3` 正式候选镜像。
-- `.env.pages`：由 `yarn build:pages` 读取，复用当前演练 API 地址，同时使用 `/siyeWorld/` 资源前缀和 `hash` 路由。
+- `.env.pages`：由 `yarn build:pages` 读取，使用正式 HTTPS 服务域名，同时设置 `/siyeWorld/` 资源前缀和 `hash` 路由。
 - `.env.*.local`：仅用于个人临时覆盖，不提交 Git；它的优先级高于标准模式文件，遗留文件可能造成构建地址被意外覆盖。
 
-GitHub Pages 地址是 `https://siyesummer.github.io/siyeWorld/`，当前演练接口是 `http://106.52.222.106:8090`。HTTPS 页面请求 HTTP API/Socket 会被现代浏览器按 Mixed Content 拦截，所以当前 Pages 制品只用于验证静态页面、资源路径和 hash 路由，不能作为音乐、聊天和日志的完整联调入口。备案完成并切换到三个 HTTPS 服务域名后，重新构建 Pages 制品才能完成真实业务验收。
+GitHub Pages 地址是 `https://siyesummer.github.io/siyeWorld/`。当前 Pages 制品通过正式 HTTPS 独立域名访问 music-api、easy-chat 和 linux-server，音乐、Socket.IO、聊天保存与历史读取、日志查询均已完成浏览器验收。
 
-当前只准备 `build:pages` 能力，不创建或启用 Pages 发布 Workflow；按第七套计划，待演练完成且域名仍不可用时再新增手动发布流程。
+Pages 发布使用 `.github/workflows/deploy-github-pages.yml`，只通过 `workflow_dispatch` 手动触发，不会因 `push` 自动发布。
 
 当前演练镜像只部署到 Linux 第七套环境。`siyefun.top` 暂不纳入本阶段部署，不在本目录提供可直接启用的 Windows Nginx 配置。
 

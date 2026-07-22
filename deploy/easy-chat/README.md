@@ -38,7 +38,7 @@ Docker 镜像版本与 npm 包 `@siyesummer/easy-chat` 的版本相互独立：n
 多 Origin 示例：
 
 ```dotenv
-CORS_ALLOW_ORIGIN=http://localhost:8080,http://127.0.0.1:8080,http://106.52.222.106:8090,https://music.siyes.cn
+CORS_ALLOW_ORIGIN=http://localhost:8080,http://127.0.0.1:8080,http://203.0.113.10:8090,https://music.siyes.cn
 ```
 
 未授权 Origin 的 Socket.IO 握手会被拒绝；无 `Origin` 的服务器内健康检查仍允许。
