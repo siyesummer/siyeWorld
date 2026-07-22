@@ -1,0 +1,75 @@
+name: Deploy siyeWorld to GitHub Pages
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+
+      - name: Configure package registry
+        run: yarn config set registry https://registry.npmmirror.com
+
+      - name: Install repository dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          for attempt in 1 2 3; do
+            echo "Yarn install attempt ${attempt}/3"
+            if yarn install \
+              --frozen-lockfile \
+              --network-timeout 600000 \
+              --network-concurrency 4; then
+              exit 0
+            fi
+            if [ "$attempt" -lt 3 ]; then
+              echo "Yarn install failed; retrying with the existing cache..."
+              sleep 10
+            fi
+          done
+          exit 1
+
+      - name: Verify source
+        run: yarn verify
+
+      - name: Build GitHub Pages artifact
+        run: yarn build:pages
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
